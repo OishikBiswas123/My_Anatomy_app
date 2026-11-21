@@ -69,9 +69,9 @@ export const BookmarksScreen: React.FC<BookmarksScreenProps> = ({
                       <span className={`text-[10px] uppercase font-bold px-1.5 py-0.2 rounded ${
                         b.system === 'skeletal' ? 'bg-amber-500/20 text-amber-300' :
                         b.system === 'muscular' ? 'bg-rose-500/20 text-rose-300' :
-                        'bg-cyan-500/20 text-cyan-300'
+                        'bg-sky-500/20 text-sky-300'
                       }`}>
-                        {b.system}
+                        {b.system === 'connective' ? 'Connective' : b.system}
                       </span>
                     </div>
                     {struct?.location && (

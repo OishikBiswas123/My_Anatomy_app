@@ -4,16 +4,16 @@ export const ANATOMY_QUIZZES: QuizQuestion[] = [
   {
     id: 'quiz_1',
     type: 'multiple_choice',
-    question: 'Which ligament provides ~85% of total restraint against anterior displacement of the tibia relative to the femur?',
-    system: 'ligamentous',
-    targetStructureId: 'ligament_acl',
+    question: 'A 38-year-old tennis player experiences a sudden "pop" in the back of the ankle during sprint acceleration. The Thompson squeeze test is positive. Which connective tissue structure is ruptured?',
+    system: 'connective',
+    targetStructureId: 'connective_achilles_tendon',
     options: [
-      { id: 'opt_1', text: 'Posterior Cruciate Ligament (PCL)', isCorrect: false },
-      { id: 'opt_2', text: 'Anterior Cruciate Ligament (ACL)', isCorrect: true, explanation: 'The ACL is the primary restraint resisting anterior tibial translation.' },
-      { id: 'opt_3', text: 'Medial Collateral Ligament (MCL)', isCorrect: false },
-      { id: 'opt_4', text: 'Patellar Ligament', isCorrect: false }
+      { id: 'opt_1', text: 'Plantaris tendon', isCorrect: false },
+      { id: 'opt_2', text: 'Calcaneal Tendon (Achilles Tendon)', isCorrect: true, explanation: 'The Achilles tendon is the thickest tendon in the body; rupture results in inability to plantarflex when the calf is squeezed (positive Thompson test).' },
+      { id: 'opt_3', text: 'Iliotibial tract', isCorrect: false },
+      { id: 'opt_4', text: 'Flexor hallucis longus tendon', isCorrect: false }
     ],
-    explanation: 'The Anterior Cruciate Ligament (ACL) originates on the posteromedial lateral femoral condyle and inserts into the anterior intercondylar tibia, restraining anterior translation.'
+    explanation: 'The calcaneal (Achilles) tendon rupture typically occurs 2–6 cm proximal to the calcaneal tuberosity in a hypovascular watershed zone.'
   },
   {
     id: 'quiz_2',
@@ -46,29 +46,29 @@ export const ANATOMY_QUIZZES: QuizQuestion[] = [
   {
     id: 'quiz_4',
     type: 'multiple_choice',
-    question: 'The mental foramen is an anatomical landmark situated on which bone?',
-    system: 'skeletal',
-    targetStructureId: 'bone_mandible',
+    question: 'Which connective tissue structures prolong the anterior ends of the ribs and provide thoracic wall elasticity during respiration?',
+    system: 'connective',
+    targetStructureId: 'connective_costal_cartilage',
     options: [
-      { id: 'opt_1', text: 'Maxilla', isCorrect: false },
-      { id: 'opt_2', text: 'Mandible', isCorrect: true, explanation: 'The mental foramen transmits the mental nerve and vessels on the anterolateral body of the mandible.' },
-      { id: 'opt_3', text: 'Frontal bone', isCorrect: false },
-      { id: 'opt_4', text: 'Zygomatic bone', isCorrect: false }
+      { id: 'opt_1', text: 'Costal Cartilages', isCorrect: true, explanation: 'Costal cartilages are hyaline cartilage bars connecting the true ribs (1–7) to the sternum.' },
+      { id: 'opt_2', text: 'Intervertebral discs', isCorrect: false },
+      { id: 'opt_3', text: 'Galea aponeurotica', isCorrect: false },
+      { id: 'opt_4', text: 'Linea alba', isCorrect: false }
     ],
-    explanation: 'The mental foramen transmits the mental nerve (terminal sensory branch of inferior alveolar nerve, CN V3) to supply the chin and lower lip.'
+    explanation: 'Costal cartilages provide the elastic compliance necessary for thoracic expansion during tidal and forced ventilation. Inflammation here presents clinically as costochondritis.'
   },
   {
     id: 'quiz_5',
     type: 'multiple_choice',
-    question: 'Which is the most commonly injured ligament in an inversion ankle sprain?',
-    system: 'ligamentous',
-    targetStructureId: 'ligament_atfl',
+    question: 'A 45-year-old patient presents with severe sciatica radiating down the posterolateral leg. An MRI reveals a herniated nucleus pulposus compressing the traversing L5 nerve root. What anatomical structure has ruptured?',
+    system: 'connective',
+    targetStructureId: 'connective_intervertebral_discs',
     options: [
-      { id: 'opt_1', text: 'Calcaneofibular ligament (CFL)', isCorrect: false },
-      { id: 'opt_2', text: 'Anterior Talofibular Ligament (ATFL)', isCorrect: true, explanation: 'The ATFL is the weakest and most frequently torn lateral ankle ligament.' },
-      { id: 'opt_3', text: 'Deltoid ligament', isCorrect: false },
-      { id: 'opt_4', text: 'Posterior Talofibular Ligament (PTFL)', isCorrect: false }
+      { id: 'opt_1', text: 'Ligamentum flavum', isCorrect: false },
+      { id: 'opt_2', text: 'Anulus fibrosus of the Intervertebral Disc', isCorrect: true, explanation: 'Disc herniation occurs when the outer anulus fibrosus tears, allowing gelatinous nucleus pulposus to escape and impinge upon nerve roots.' },
+      { id: 'opt_3', text: 'Supraspinous ligament', isCorrect: false },
+      { id: 'opt_4', text: 'Linea alba', isCorrect: false }
     ],
-    explanation: 'The ATFL is taut during plantarflexion and inversion, making it the primary structure damaged during lateral ankle sprains.'
+    explanation: 'The intervertebral disc is a fibrocartilaginous symphysis. Weakness in the posterior anulus fibrosus permits posterolateral herniation of the central nucleus pulposus.'
   }
 ];

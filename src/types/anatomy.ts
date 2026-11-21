@@ -1,9 +1,9 @@
 /**
  * Anatomical System and Structure Type Definitions
- * Designed for 3D Anatomy Atlas
+ * Designed for My Anatomy 3D Interactive Platform
  */
 
-export type AnatomicalSystemType = 'skeletal' | 'muscular' | 'ligamentous' | 'nervous' | 'cardiovascular' | 'organ';
+export type AnatomicalSystemType = 'skeletal' | 'muscular' | 'connective' | 'nervous' | 'cardiovascular' | 'organ';
 
 export type SkeletalRegion = 
   | 'skull'
@@ -27,17 +27,15 @@ export type MuscularRegion =
   | 'leg'
   | 'foot';
 
-export type LigamentousRegion =
-  | 'cranial_cervical'
-  | 'vertebral'
-  | 'shoulder_joint'
-  | 'elbow_joint'
-  | 'wrist_hand'
+export type ConnectiveRegion =
+  | 'head_neck'
+  | 'thoracic_cage'
+  | 'spine_trunk'
   | 'pelvis_hip'
-  | 'knee_joint'
-  | 'ankle_foot';
+  | 'upper_limb'
+  | 'lower_limb';
 
-export type AnatomicalRegion = SkeletalRegion | MuscularRegion | LigamentousRegion;
+export type AnatomicalRegion = SkeletalRegion | MuscularRegion | ConnectiveRegion;
 
 export interface BaseAnatomyStructure {
   id: string;
@@ -78,17 +76,19 @@ export interface MuscleStructure extends BaseAnatomyStructure {
   fiberType?: string;
 }
 
-export interface LigamentStructure extends BaseAnatomyStructure {
-  system: 'ligamentous';
-  region: LigamentousRegion;
+export interface ConnectiveStructure extends BaseAnatomyStructure {
+  system: 'connective';
+  region: ConnectiveRegion;
+  tissueType: 'Tendon' | 'Aponeurosis' | 'Cartilage' | 'Ligament' | 'Deep Fascia';
+  composition: string;
   attachmentPoints: string[];
-  function: string[];
-  jointAssociation: string;
-  stabilityProvided: string;
-  commonInjuries: string[];
+  biomechanicalFunction: string[];
+  jointOrStructureAssociation: string;
+  vascularity?: string;
+  commonPathologies: string[];
 }
 
-export type AnatomyStructure = BoneStructure | MuscleStructure | LigamentStructure;
+export type AnatomyStructure = BoneStructure | MuscleStructure | ConnectiveStructure;
 
 export interface BookmarkItem {
   id: string;

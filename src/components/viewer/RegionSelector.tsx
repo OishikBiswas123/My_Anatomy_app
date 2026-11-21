@@ -38,12 +38,12 @@ const MUSCULAR_REGIONS: RegionItem[] = [
   { id: 'leg', name: 'Lower Leg', description: 'Gastrocnemius, soleus, tibialis anterior' },
 ];
 
-const LIGAMENTOUS_REGIONS: RegionItem[] = [
-  { id: 'knee_joint', name: 'Knee Joint', description: 'ACL, PCL, MCL, LCL, patellar' },
-  { id: 'shoulder_joint', name: 'Shoulder Joint', description: 'Glenohumeral ligaments, coracohumeral' },
-  { id: 'ankle_foot', name: 'Ankle & Foot', description: 'ATFL, CFL, PTFL, deltoid ligament' },
-  { id: 'elbow_joint', name: 'Elbow Joint', description: 'UCL, RCL, annular ligament' },
-  { id: 'pelvis_hip', name: 'Pelvis & Hip', description: 'Iliofemoral, pubofemoral, ischiofemoral' },
+const CONNECTIVE_REGIONS: RegionItem[] = [
+  { id: 'lower_limb', name: 'Lower Limb', description: 'Calcaneal (Achilles) tendon, IT band, plantar fascia' },
+  { id: 'spine_trunk', name: 'Spine and Trunk', description: 'Intervertebral discs, linea alba, thoracolumbar fascia' },
+  { id: 'thoracic_cage', name: 'Thoracic Cage', description: 'Costal cartilages (1–10), sternocostal joints' },
+  { id: 'pelvis_hip', name: 'Pelvis and Groin', description: 'Inguinal ligament, pubic symphysis interpubic disc' },
+  { id: 'head_neck', name: 'Head and Neck', description: 'Galea aponeurotica, nuchal ligament' },
 ];
 
 export const RegionSelector: React.FC<RegionSelectorProps> = ({
@@ -55,7 +55,7 @@ export const RegionSelector: React.FC<RegionSelectorProps> = ({
   const regions = 
     system === 'skeletal' ? SKELETAL_REGIONS :
     system === 'muscular' ? MUSCULAR_REGIONS :
-    LIGAMENTOUS_REGIONS;
+    CONNECTIVE_REGIONS;
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 flex items-center justify-center p-4">

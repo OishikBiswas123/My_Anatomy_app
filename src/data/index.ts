@@ -1,19 +1,19 @@
 import { AnatomyStructure, AnatomicalSystemType, AnatomicalRegion } from '../types/anatomy';
 import { BONES_DATA } from './bones';
 import { MUSCLES_DATA } from './muscles';
-import { LIGAMENTS_DATA } from './ligaments';
+import { CONNECTIVE_DATA } from './connective';
 export { ANATOMY_QUIZZES } from './quizzes';
 
 export const ALL_STRUCTURES: AnatomyStructure[] = [
   ...BONES_DATA,
   ...MUSCLES_DATA,
-  ...LIGAMENTS_DATA,
+  ...CONNECTIVE_DATA,
 ];
 
 export const STRUCTURES_BY_SYSTEM: Record<AnatomicalSystemType, AnatomyStructure[]> = {
   skeletal: BONES_DATA,
   muscular: MUSCLES_DATA,
-  ligamentous: LIGAMENTS_DATA,
+  connective: CONNECTIVE_DATA,
   nervous: [],
   cardiovascular: [],
   organ: [],
@@ -36,14 +36,16 @@ ALL_STRUCTURES.forEach((structure) => {
 
 /**
  * Normalizes mesh names for robust matching:
- * e.g., "Femur_L" -> "femur", "bone_femur" -> "femur", "frontal_bone" -> "frontal"
+ * e.g., "t_calcaneal_tendon_l" -> "calcaneal_tendon", "b_cc3_l" -> "cc3", "bone_femur" -> "femur"
  */
 function normalizeMeshName(name: string): string {
   return name
     .toLowerCase()
+    .replace(/^t_/, '')
+    .replace(/^b_/, '')
     .replace(/^bone_/, '')
     .replace(/^muscle_/, '')
-    .replace(/^ligament_/, '')
+    .replace(/^connective_/, '')
     .replace(/_[lr]$/, '')
     .replace(/_left$/, '')
     .replace(/_right$/, '')
@@ -58,19 +60,35 @@ export function getStructureByMeshId(meshId: string): AnatomyStructure | undefin
   if (!meshId) return undefined;
   
   const rawLower = meshId.toLowerCase();
-  // 1. Direct match
+  
+  // 1. Direct match in dictionary
   if (MESH_ID_MAP.has(rawLower)) {
     return MESH_ID_MAP.get(rawLower);
   }
 
-  // 2. Normalized match
+  // 2. Costal Cartilage matching: e.g. b_cc1_l, b_cc5_r -> Costal Cartilages
+  if (rawLower.includes('_cc') || rawLower.startsWith('b_cc') || rawLower.includes('costal_cartilage')) {
+    const cc = STRUCTURE_ID_MAP.get('connective_costal_cartilage');
+    if (cc) return cc;
+  }
+
+  // 3. Intervertebral Disc matching: e.g. b_disc_l4_l5, disc_c2_c3 -> Intervertebral Discs
+  if (rawLower.includes('disc') || rawLower.includes('discus')) {
+    if (rawLower.includes('interpubic') || rawLower.includes('pubic')) {
+      const pubic = STRUCTURE_ID_MAP.get('connective_pubic_symphysis');
+      if (pubic) return pubic;
+    }
+    const discs = STRUCTURE_ID_MAP.get('connective_intervertebral_discs');
+    if (discs) return discs;
+  }
+
+  // 4. Normalized match
   const normalized = normalizeMeshName(rawLower);
   for (const s of ALL_STRUCTURES) {
     const sNorm = normalizeMeshName(s.meshId);
     if (sNorm === normalized || s.id.toLowerCase().includes(normalized)) {
       return s;
     }
-    // Also check meshIds aliases
     if (s.meshIds) {
       for (const alias of s.meshIds) {
         if (normalizeMeshName(alias) === normalized) {
@@ -80,7 +98,7 @@ export function getStructureByMeshId(meshId: string): AnatomyStructure | undefin
     }
   }
 
-  // 3. Substring / Token matching
+  // 5. Substring / Token matching
   for (const s of ALL_STRUCTURES) {
     const sNameNorm = s.name.toLowerCase().replace(/\s+/g, '_');
     if (rawLower.includes(sNameNorm) || sNameNorm.includes(normalized)) {

@@ -69,15 +69,15 @@ export const ViewerToolbar: React.FC<ViewerToolbarProps> = ({
           </button>
 
           <button
-            onClick={() => onSystemChange('ligamentous')}
+            onClick={() => onSystemChange('connective')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              system === 'ligamentous'
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
+              system === 'connective'
+                ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
             <Layers size={14} />
-            <span>Ligaments</span>
+            <span>Connective</span>
           </button>
         </div>
 

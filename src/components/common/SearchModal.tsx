@@ -104,15 +104,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           </button>
 
           <button
-            onClick={() => setSystemFilter('ligamentous')}
+            onClick={() => setSystemFilter('connective')}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-colors ${
-              systemFilter === 'ligamentous'
+              systemFilter === 'connective'
                 ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40 font-semibold'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
             <Layers size={12} />
-            <span>Ligaments</span>
+            <span>Connective</span>
           </button>
         </div>
 
@@ -122,7 +122,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             <div className="py-12 text-center text-slate-500">
               <SearchIcon size={32} className="mx-auto mb-2 opacity-30 text-cyan-400" />
               <p className="text-sm">Type an anatomical name to search</p>
-              <p className="text-xs text-slate-600 mt-1">Try "femur", "acl", "deltoid", "patella", or "radius"</p>
+              <p className="text-xs text-slate-600 mt-1">Try "femur", "achilles", "deltoid", "disc", or "costal"</p>
             </div>
           ) : results.length === 0 ? (
             <div className="py-12 text-center text-slate-500">
@@ -144,9 +144,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     <span className={`text-[10px] uppercase font-bold px-1.5 py-0.5 rounded ${
                       item.system === 'skeletal' ? 'bg-amber-500/20 text-amber-300' :
                       item.system === 'muscular' ? 'bg-rose-500/20 text-rose-300' :
-                      'bg-cyan-500/20 text-cyan-300'
+                      'bg-sky-500/20 text-sky-300'
                     }`}>
-                      {item.system}
+                      {item.system === 'connective' ? 'Connective' : item.system}
                     </span>
                   </div>
                   {item.commonName && (

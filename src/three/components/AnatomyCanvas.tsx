@@ -2,7 +2,6 @@ import React, { Suspense, Component, ErrorInfo, ReactNode } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import { ModelRenderer } from './ModelRenderer';
-import { LigamentRenderer } from './LigamentRenderer';
 import { CameraControls, CameraPreset } from './CameraControls';
 import { AnatomyStructure, AnatomicalSystemType } from '../../types/anatomy';
 
@@ -90,7 +89,8 @@ export const AnatomyCanvas: React.FC<AnatomyCanvasProps> = ({
   highlightColor = '#06b6d4',
   renderQuality = 'medium',
 }) => {
-  const modelPath = system === 'muscular' 
+  // Model selection: muscles.glb houses all muscles, tendons, aponeuroses, costal cartilages and spinal discs
+  const modelPath = (system === 'muscular' || system === 'connective')
     ? '/models/muscles/muscles.glb' 
     : '/models/bones/skeleton.glb';
 
@@ -109,7 +109,6 @@ export const AnatomyCanvas: React.FC<AnatomyCanvasProps> = ({
     }, false);
   };
 
-  // Adjust pixel ratio and antialiasing based on render quality preference
   const isHighQuality = renderQuality === 'high';
   const targetDpr = isHighQuality ? [1, 1.3] : [1, 1.0];
 
@@ -121,9 +120,9 @@ export const AnatomyCanvas: React.FC<AnatomyCanvasProps> = ({
             camera={{ position: [0, 0.2, 2.3], fov: 45, near: 0.1, far: 50 }}
             dpr={targetDpr as [number, number]}
             gl={{
-              antialias: isHighQuality, // Disable MSAA on medium/low to prevent emulator GPU crashes
+              antialias: isHighQuality,
               powerPreference: 'low-power',
-              precision: 'mediump', // Lower shader register pressure on mobile emulators
+              precision: 'mediump',
               depth: true,
               stencil: false,
               preserveDrawingBuffer: false,
@@ -132,7 +131,7 @@ export const AnatomyCanvas: React.FC<AnatomyCanvasProps> = ({
             className="w-full h-full"
           >
             {/* Lighting Rig - Studio Medical Lighting */}
-            <ambientLight intensity={0.75} />
+            <ambientLight intensity={0.8} />
 
             <directionalLight
               position={[3, 4, 3]}
@@ -164,10 +163,10 @@ export const AnatomyCanvas: React.FC<AnatomyCanvasProps> = ({
               onPresetApplied={onPresetApplied}
             />
 
-            {/* Main 3D Model Renderer */}
+            {/* Main 3D Model Renderer (Authentic segmented geometry) */}
             <ModelRenderer
               modelPath={modelPath}
-              system={system === 'ligamentous' ? 'skeletal' : (system as 'skeletal' | 'muscular')}
+              system={system as 'skeletal' | 'muscular' | 'connective'}
               selectedStructure={selectedStructure}
               onSelectStructure={onSelectStructure}
               isolateMode={isolateMode}
@@ -175,16 +174,6 @@ export const AnatomyCanvas: React.FC<AnatomyCanvasProps> = ({
               highlightColor={highlightColor}
               filterRegion={filterRegion}
             />
-
-            {/* Ligament overlay when in Ligamentous System */}
-            {system === 'ligamentous' && (
-              <LigamentRenderer
-                selectedStructure={selectedStructure}
-                onSelectStructure={onSelectStructure}
-                isolateMode={isolateMode}
-                highlightColor={highlightColor}
-              />
-            )}
           </Canvas>
         </Suspense>
       </WebGLErrorBoundary>

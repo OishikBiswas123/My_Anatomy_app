@@ -33,7 +33,7 @@ const DEFAULT_PROGRESS: StudyProgress = {
   systemMastery: {
     skeletal: 0,
     muscular: 0,
-    ligamentous: 0,
+    connective: 0,
     nervous: 0,
     cardiovascular: 0,
     organ: 0,

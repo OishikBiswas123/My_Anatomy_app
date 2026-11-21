@@ -9,9 +9,11 @@ import {
   Sparkles, 
   Crosshair,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Link,
+  Layers
 } from 'lucide-react';
-import { AnatomyStructure, BoneStructure, MuscleStructure, LigamentStructure } from '../../types/anatomy';
+import { AnatomyStructure, BoneStructure, MuscleStructure, ConnectiveStructure } from '../../types/anatomy';
 import { StorageService } from '../../services/storage';
 
 interface AnatomyDetailsPanelProps {
@@ -64,11 +66,11 @@ export const AnatomyDetailsPanel: React.FC<AnatomyDetailsPanelProps> = ({
 
   const isBone = structure.system === 'skeletal';
   const isMuscle = structure.system === 'muscular';
-  const isLigament = structure.system === 'ligamentous';
+  const isConnective = structure.system === 'connective';
 
   const bone = isBone ? (structure as BoneStructure) : null;
   const muscle = isMuscle ? (structure as MuscleStructure) : null;
-  const ligament = isLigament ? (structure as LigamentStructure) : null;
+  const connective = isConnective ? (structure as ConnectiveStructure) : null;
 
   return (
     <div className={`fixed inset-x-0 bottom-0 z-30 transition-all duration-300 ease-out sm:right-4 sm:left-auto sm:top-20 sm:bottom-6 sm:w-96 ${
@@ -82,9 +84,9 @@ export const AnatomyDetailsPanel: React.FC<AnatomyDetailsPanelProps> = ({
             <span className={`px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider ${
               isBone ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' :
               isMuscle ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' :
-              'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30'
+              'bg-sky-500/20 text-sky-300 border border-sky-500/30'
             }`}>
-              {structure.system}
+              {structure.system === 'connective' ? 'Connective Tissue' : structure.system}
             </span>
             <span className="text-xs text-slate-400 capitalize">
               {structure.region.replace(/_/g, ' ')}
@@ -276,38 +278,60 @@ export const AnatomyDetailsPanel: React.FC<AnatomyDetailsPanelProps> = ({
             </div>
           )}
 
-          {/* LIGAMENT SPECIFIC DETAILS */}
-          {ligament && (
+          {/* CONNECTIVE TISSUE SPECIFIC DETAILS */}
+          {connective && (
             <div className="pt-3 space-y-3">
+              {/* Tissue Classification & Histology */}
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs px-2.5 py-1 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40 font-semibold">
+                  {connective.tissueType}
+                </span>
+                <span className="text-xs text-slate-400">
+                  {connective.composition}
+                </span>
+              </div>
+
               {/* Attachment Points */}
               <div>
-                <h4 className="text-xs font-semibold text-slate-400 mb-1">Attachment Points</h4>
+                <h4 className="text-xs font-semibold text-slate-400 mb-1 flex items-center gap-1.5">
+                  <Link size={13} className="text-sky-400" /> Anatomical Attachments
+                </h4>
                 <ul className="text-xs space-y-1 text-slate-300 list-disc list-inside">
-                  {ligament.attachmentPoints.map((pt, idx) => (
+                  {connective.attachmentPoints.map((pt, idx) => (
                     <li key={idx}>{pt}</li>
                   ))}
                 </ul>
               </div>
 
-              {/* Function & Stability */}
+              {/* Biomechanical Function */}
               <div>
-                <h4 className="text-xs font-semibold text-cyan-400 mb-1 flex items-center gap-1">
-                  <ShieldAlert size={14} /> Joint Stability & Function
+                <h4 className="text-xs font-semibold text-cyan-400 mb-1 flex items-center gap-1.5">
+                  <Layers size={13} /> Biomechanical Function & Kinetics
                 </h4>
-                <p className="text-xs text-slate-200 mb-1.5 font-medium">{ligament.stabilityProvided}</p>
-                <ul className="text-xs space-y-1 text-slate-300 list-disc list-inside">
-                  {ligament.function.map((fn, idx) => (
+                <p className="text-xs text-slate-400 mb-1.5">
+                  <strong className="text-slate-300">Associated Structure:</strong> {connective.jointOrStructureAssociation}
+                </p>
+                <ul className="text-xs space-y-1 text-slate-200 list-disc list-inside">
+                  {connective.biomechanicalFunction.map((fn, idx) => (
                     <li key={idx}>{fn}</li>
                   ))}
                 </ul>
               </div>
 
-              {/* Common Injuries */}
-              {ligament.commonInjuries && ligament.commonInjuries.length > 0 && (
+              {/* Vascularity */}
+              {connective.vascularity && (
+                <div className="bg-slate-800/50 p-2.5 rounded-lg border border-slate-700/50 text-xs">
+                  <span className="text-amber-400 font-semibold block mb-0.5">Vascularity & Perfusion:</span>
+                  <span className="text-slate-300">{connective.vascularity}</span>
+                </div>
+              )}
+
+              {/* Common Pathologies */}
+              {connective.commonPathologies && connective.commonPathologies.length > 0 && (
                 <div className="bg-rose-950/30 border border-rose-900/40 p-2.5 rounded-lg">
-                  <h4 className="text-xs font-semibold text-rose-300 mb-1">Mechanism of Injury</h4>
+                  <h4 className="text-xs font-semibold text-rose-300 mb-1">Common Pathologies & Clinical Injuries</h4>
                   <ul className="text-xs space-y-1 text-slate-300 list-disc list-inside">
-                    {ligament.commonInjuries.map((inj, idx) => (
+                    {connective.commonPathologies.map((inj, idx) => (
                       <li key={idx}>{inj}</li>
                     ))}
                   </ul>

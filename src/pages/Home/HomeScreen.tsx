@@ -144,22 +144,22 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               </div>
             </div>
 
-            {/* Ligamentous Card */}
+            {/* Connective Tissue Card */}
             <div
-              onClick={() => onSelectSystem('ligamentous')}
-              className="group cursor-pointer relative overflow-hidden rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 hover:border-cyan-500/50 p-5 shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+              onClick={() => onSelectSystem('connective')}
+              className="group cursor-pointer relative overflow-hidden rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 hover:border-sky-500/50 p-5 shadow-xl transition-all duration-200 hover:-translate-y-0.5"
             >
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-105 transition-transform">
+              <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 mb-4 group-hover:scale-105 transition-transform">
                 <Layers size={24} />
               </div>
-              <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
-                Ligamentous System
+              <h3 className="text-base font-bold text-white group-hover:text-sky-300 transition-colors">
+                Connective Tissue
               </h3>
               <p className="text-xs text-slate-400 mt-1 line-clamp-2">
-                Joint stabilizers: Knee ACL/PCL/collaterals, shoulder, ankle, and joint capsules.
+                Tendons, aponeuroses, deep fascia, costal cartilages, and spinal discs.
               </p>
-              <div className="mt-4 flex items-center justify-between text-xs text-cyan-400 font-medium">
-                <span>Open 3D Ligaments</span>
+              <div className="mt-4 flex items-center justify-between text-xs text-sky-400 font-medium">
+                <span>Explore Connective 3D</span>
                 <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
