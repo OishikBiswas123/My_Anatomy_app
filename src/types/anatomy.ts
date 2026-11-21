@@ -31,9 +31,11 @@ export type ConnectiveRegion =
   | 'head_neck'
   | 'thoracic_cage'
   | 'spine_trunk'
+  | 'shoulder_arm'
+  | 'hand_wrist'
   | 'pelvis_hip'
-  | 'upper_limb'
-  | 'lower_limb';
+  | 'knee'
+  | 'ankle_foot';
 
 export type AnatomicalRegion = SkeletalRegion | MuscularRegion | ConnectiveRegion;
 
@@ -48,8 +50,8 @@ export interface BaseAnatomyStructure {
   meshIds?: string[]; // Paired or multi-part structures (e.g. bilateral or multipart)
   description: string;
   location: string;
-  clinicalNotes: string[];
-  tags: string[];
+  clinicalNotes?: string[];
+  tags?: string[];
 }
 
 export interface BoneStructure extends BaseAnatomyStructure {

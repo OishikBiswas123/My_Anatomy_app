@@ -3,6 +3,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import { AnatomyStructure } from '../../types/anatomy';
 import { getStructureByMeshId } from '../../data';
+import { ConnectiveTissuesRenderer } from './ConnectiveTissuesRenderer';
 
 interface ModelRendererProps {
   modelPath: string;
@@ -22,82 +23,81 @@ export const ModelRenderer: React.FC<ModelRendererProps> = ({
   onSelectStructure,
   isolateMode,
   hiddenMeshIds,
-  highlightColor = '#06b6d4',
+  highlightColor = '#00f5ff',
   filterRegion,
 }) => {
   const gltf = useGLTF(modelPath);
-  const modelGroupRef = useRef<THREE.Group>(null);
   const dragStartPos = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
-  // Clone scene so modifications (materials/visibility) are isolated
+  // Clone scene so modifications are cleanly encapsulated
   const clonedScene = useMemo(() => {
-    const clone = gltf.scene.clone(true);
-
-    // Center and scale model once during clone initialization
-    const box = new THREE.Box3().setFromObject(clone);
-    const center = box.getCenter(new THREE.Vector3());
-    const size = box.getSize(new THREE.Vector3());
-
-    clone.position.x = -center.x;
-    clone.position.y = -center.y;
-    clone.position.z = -center.z;
-
-    const maxDim = Math.max(size.x, size.y, size.z);
-    if (maxDim > 0) {
-      const targetHeight = 1.8;
-      const scale = targetHeight / maxDim;
-      clone.scale.setScalar(scale);
-    }
-
-    return clone;
+    return gltf.scene.clone(true);
   }, [gltf.scene]);
 
+  // Compute unified centering and scale offset so skeleton and connective tissues align identically
+  const { offset, scale } = useMemo(() => {
+    const box = new THREE.Box3().setFromObject(clonedScene);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const targetHeight = 1.8;
+    const s = maxDim > 0 ? targetHeight / maxDim : 1;
+
+    return {
+      offset: [-center.x * s, -center.y * s, -center.z * s] as [number, number, number],
+      scale: s,
+    };
+  }, [clonedScene]);
+
   // Shared materials for this model instance
-  const { 
-    baseMaterial, 
-    highlightMaterial, 
+  const {
+    baseMaterial,
+    highlightMaterial,
     dimmedMaterial,
-    connectiveTissueMaterial,
-    connectiveGhostMaterial 
+    transparentBoneMaterial,
+    cartilageMaterial,
   } = useMemo(() => {
-    // Standard Bone Ivory
+    // Standard Bone Ivory (Skeletal view)
     const baseBone = new THREE.MeshStandardMaterial({
       color: new THREE.Color('#dcd4c7'),
       roughness: 0.65,
       metalness: 0.05,
     });
 
-    // Standard Muscle Ruby
+    // Standard Muscle Ruby (Muscular view)
     const baseMuscle = new THREE.MeshStandardMaterial({
       color: new THREE.Color('#9e3a3a'),
       roughness: 0.7,
       metalness: 0.02,
     });
 
-    // Connective Tissue: Pearlescent Collagen White-Cyan
-    const connectiveTissue = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#bae6fd'), // Sky / pearl white-cyan
+    // Transparent Smoked-Glass Bone (Connective view context foundation)
+    const transparentBone = new THREE.MeshStandardMaterial({
+      color: new THREE.Color('#334155'),
       roughness: 0.35,
-      metalness: 0.12,
-      emissive: new THREE.Color('#0284c7'),
-      emissiveIntensity: 0.15,
-    });
-
-    // Soft Ghost Blueprint Context for surrounding frame in Connective View
-    const connectiveGhost = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#1e293b'),
-      roughness: 0.9,
-      metalness: 0.0,
+      metalness: 0.05,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.28,
+      depthWrite: true,
     });
 
-    // Highlight Shader
+    // Translucent Ice-Cyan Cartilage / Discs
+    const cartilage = new THREE.MeshStandardMaterial({
+      color: new THREE.Color('#38bdf8'),
+      roughness: 0.25,
+      metalness: 0.1,
+      transparent: true,
+      opacity: 0.88,
+      emissive: new THREE.Color('#0284c7'),
+      emissiveIntensity: 0.18,
+    });
+
+    // Electric Cyan Highlight Shader
     const highlight = new THREE.MeshStandardMaterial({
       color: new THREE.Color(highlightColor),
       emissive: new THREE.Color(highlightColor),
-      emissiveIntensity: 0.65,
-      roughness: 0.3,
+      emissiveIntensity: 0.85,
+      roughness: 0.2,
       metalness: 0.1,
     });
 
@@ -110,23 +110,23 @@ export const ModelRenderer: React.FC<ModelRendererProps> = ({
       opacity: 0.22,
     });
 
-    return { 
-      baseMaterial: system === 'skeletal' ? baseBone : baseMuscle, 
-      highlightMaterial: highlight, 
+    return {
+      baseMaterial: system === 'skeletal' ? baseBone : baseMuscle,
+      highlightMaterial: highlight,
       dimmedMaterial: dimmed,
-      connectiveTissueMaterial: connectiveTissue,
-      connectiveGhostMaterial: connectiveGhost
+      transparentBoneMaterial: transparentBone,
+      cartilageMaterial: cartilage,
     };
   }, [system, highlightColor]);
 
-  // Clean up materials and detached cloned nodes on unmount to prevent GPU memory leaks
+  // Clean up materials on unmount
   useEffect(() => {
     return () => {
       baseMaterial.dispose();
       highlightMaterial.dispose();
       dimmedMaterial.dispose();
-      connectiveTissueMaterial.dispose();
-      connectiveGhostMaterial.dispose();
+      transparentBoneMaterial.dispose();
+      cartilageMaterial.dispose();
 
       if (clonedScene) {
         clonedScene.traverse((child) => {
@@ -143,15 +143,15 @@ export const ModelRenderer: React.FC<ModelRendererProps> = ({
       }
     };
   }, [
-    clonedScene, 
-    baseMaterial, 
-    highlightMaterial, 
-    dimmedMaterial, 
-    connectiveTissueMaterial, 
-    connectiveGhostMaterial
+    clonedScene,
+    baseMaterial,
+    highlightMaterial,
+    dimmedMaterial,
+    transparentBoneMaterial,
+    cartilageMaterial,
   ]);
 
-  // Update mesh materials and visibility when selection, isolation, or filters change
+  // Update mesh materials and visibility when state changes
   useEffect(() => {
     clonedScene.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
@@ -162,20 +162,30 @@ export const ModelRenderer: React.FC<ModelRendererProps> = ({
         const structure = getStructureByMeshId(mesh.name);
         const isSelected = selectedStructure && structure?.id === selectedStructure.id;
 
-        // Check if this is a connective tissue element
-        const isConnectiveMesh = 
-          meshName.startsWith('t_') || 
-          meshName.includes('_cc') || 
-          meshName.startsWith('b_cc') || 
+        // Check if this is a costal cartilage or intervertebral disc in skeleton.glb
+        const isCartilageOrDisc =
+          meshName.startsWith('cc') ||
+          meshName.includes('_cc') ||
+          meshName.startsWith('b_cc') ||
           meshName.includes('disc') ||
-          structure?.system === 'connective';
+          (system === 'connective' && structure?.system === 'connective');
 
         // Visibility handling
-        const isManuallyHidden = hiddenMeshIds.has(meshName) || (structure && hiddenMeshIds.has(structure.id));
-        
+        const isManuallyHidden =
+          hiddenMeshIds.has(meshName) || (structure && hiddenMeshIds.has(structure.id));
+
         let shouldBeVisible = true;
         if (isManuallyHidden) {
           shouldBeVisible = false;
+        } else if (system === 'connective') {
+          if (isolateMode && selectedStructure) {
+            shouldBeVisible = isSelected || false;
+          } else if (filterRegion && structure && structure.system === 'connective') {
+            shouldBeVisible = structure.region === filterRegion;
+          } else {
+            // In connective view, transparent bones provide anatomical foundation unless manually hidden
+            shouldBeVisible = true;
+          }
         } else if (isolateMode && selectedStructure) {
           shouldBeVisible = isSelected || false;
         } else if (filterRegion && structure) {
@@ -188,11 +198,11 @@ export const ModelRenderer: React.FC<ModelRendererProps> = ({
         if (isSelected) {
           mesh.material = highlightMaterial;
         } else if (system === 'connective') {
-          if (isConnectiveMesh) {
-            mesh.material = selectedStructure ? dimmedMaterial : connectiveTissueMaterial;
+          if (isCartilageOrDisc) {
+            mesh.material = selectedStructure ? dimmedMaterial : cartilageMaterial;
           } else {
-            // Surrounding anatomical frame in ghost context
-            mesh.material = connectiveGhostMaterial;
+            // Bones rendered as transparent smoked glass foundation
+            mesh.material = transparentBoneMaterial;
           }
         } else if (selectedStructure && !isolateMode) {
           mesh.material = dimmedMaterial;
@@ -211,8 +221,8 @@ export const ModelRenderer: React.FC<ModelRendererProps> = ({
     baseMaterial,
     highlightMaterial,
     dimmedMaterial,
-    connectiveTissueMaterial,
-    connectiveGhostMaterial,
+    transparentBoneMaterial,
+    cartilageMaterial,
   ]);
 
   // Touch/pointer down to track drag start
@@ -284,36 +294,43 @@ export const ModelRenderer: React.FC<ModelRendererProps> = ({
             id: `connective_${meshName}`,
             name: fallbackName,
             system: 'connective',
-            region: 'spine_trunk',
+            region: 'thoracic_cage',
             meshId: meshName,
-            tissueType: 'Tendon',
-            composition: 'Dense collagenous connective tissue',
-            attachmentPoints: ['Regional anatomical attachment'],
-            biomechanicalFunction: ['Force transmission and joint stabilization'],
-            jointOrStructureAssociation: 'Human musculoskeletal system',
+            tissueType: 'Cartilage',
+            composition: 'Hyaline cartilage matrix',
+            attachmentPoints: ['Rib and sternocostal junction'],
+            biomechanicalFunction: ['Thoracic cage compliance and respiratory elasticity'],
+            jointOrStructureAssociation: 'Thoracic cage',
+            commonPathologies: ['Costochondritis', 'Chondral calcification'],
             description: `Connective tissue structure identified as ${fallbackName}.`,
-            location: 'Musculoskeletal framework',
-            commonPathologies: ['Tensile strain or overuse tendinopathy'],
-            clinicalNotes: ['Refer to clinical biomechanics and orthopedics references for specific details.'],
-            tags: [meshName, 'connective tissue'],
+            location: 'Thorax',
+            tags: [meshName],
           });
         }
       }
     }
   };
 
-  const handlePointerMissed = () => {
-    onSelectStructure(null);
-  };
-
   return (
-    <group
-      ref={modelGroupRef}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-      onPointerMissed={handlePointerMissed}
-    >
-      <primitive object={clonedScene} />
+    <group position={offset} scale={scale}>
+      {/* 3D Foundation Model (Skeleton or Muscles) */}
+      <primitive
+        object={clonedScene}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+      />
+
+      {/* Complete Interactive Connective Tissues & Ligaments for Connective view */}
+      {system === 'connective' && (
+        <ConnectiveTissuesRenderer
+          selectedStructure={selectedStructure}
+          onSelectStructure={onSelectStructure}
+          isolateMode={isolateMode}
+          hiddenMeshIds={hiddenMeshIds}
+          highlightColor={highlightColor}
+          filterRegion={filterRegion}
+        />
+      )}
     </group>
   );
 };

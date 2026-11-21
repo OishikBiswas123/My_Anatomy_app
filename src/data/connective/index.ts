@@ -1,283 +1,1040 @@
 import { ConnectiveStructure } from '../../types/anatomy';
 
-export const CONNECTIVE_DATA: ConnectiveStructure[] = [
-  // --- TENDONS & APONEUROSES ---
+export const CONNECTIVE_STRUCTURES: ConnectiveStructure[] = [
+  // ==========================================
+  // HAND AND WRIST CONNECTIVE TISSUES
+  // ==========================================
   {
-    id: 'connective_achilles_tendon',
-    name: 'Calcaneal Tendon (Achilles Tendon)',
-    latinName: 'Tendo calcaneus',
-    commonName: 'Achilles tendon',
+    id: 'flexor_retinaculum_l',
+    name: 'Flexor Retinaculum of Left Wrist (Transverse Carpal Ligament)',
+    latinName: 'Retinaculum musculorum flexorum carpi sinistri',
+    commonName: 'Transverse carpal ligament / Carpal tunnel roof',
     system: 'connective',
-    region: 'lower_limb',
-    meshId: 't_calcaneal_tendon_l',
-    meshIds: ['t_calcaneal_tendon_l', 't_calcaneal_tendon_r'],
-    tissueType: 'Tendon',
-    composition: 'Dense regular connective tissue (predominantly Type I Collagen, 90-95% parallel fibrils)',
-    location: 'Posterior compartment of the distal lower leg and posterior hindfoot',
-    description: 'The thickest, strongest, and most resilient tendon in the human body. It unites the gastrocnemius and soleus muscles (triceps surae) and the plantaris into a single powerful terminal insertion on the calcaneal tuberosity.',
-    attachmentPoints: [
-      'Proximal: Musculotendinous junction of gastrocnemius bellies (mid-calf) and deeper soleus aponeurosis',
-      'Distal: Posterior surface of the calcaneal tuberosity of the calcaneus (heel bone)'
-    ],
-    biomechanicalFunction: [
-      'Transfers tensile forces up to 10 times body weight during sprinting and jumping',
-      'Acts as a dynamic biological spring, storing and returning elastic kinetic energy during locomotion to reduce the metabolic cost of walking by up to 50%',
-      'Powers forceful plantarflexion of the talocrural ankle joint'
-    ],
-    jointOrStructureAssociation: 'Talocrural (ankle) joint and subtalar joint',
-    vascularity: 'Hypovascular watershed zone approximately 2 to 6 cm proximal to the calcaneal insertion (site of highest rupture incidence)',
-    commonPathologies: [
-      'Acute Achilles tendon rupture: Sudden explosive dorsiflexion against a contracted triceps surae; diagnosed with positive Thompson squeeze test',
-      'Achilles tendinopathy / tendinosis: Microtears and failed collagen healing response in the hypovascular midportion or insertional zone',
-      'Retrocalcaneal bursitis: Inflammation of the synovial bursa separating the tendon from the superior calcaneus'
-    ],
-    clinicalNotes: [
-      'The Achilles tendon undergoes a 90-degree internal spiral rotation as it descends, creating high tensile strength and energy storage capacity.',
-      'Fluoroquinolone antibiotics (e.g. ciprofloxacin) and local corticosteroid injections carry an established risk of precipitating acute Achilles tendinopathy and rupture.'
-    ],
-    tags: ['achilles', 'tendon', 'calf', 'calcaneus', 'triceps surae', 'locomotion', 'spring']
-  },
-  {
-    id: 'connective_it_band',
-    name: 'Iliotibial Tract (IT Band)',
-    latinName: 'Tractus iliotibialis',
-    commonName: 'IT Band',
-    system: 'connective',
-    region: 'lower_limb',
-    meshId: 't_it_band_l',
-    meshIds: ['t_it_band_l', 't_it_band_r'],
-    tissueType: 'Deep Fascia',
-    composition: 'Dense fibrous connective tissue forming a thickened longitudinal reinforcement of the fascia lata',
-    location: 'Lateral thigh running from iliac crest to anterolateral proximal tibia',
-    description: 'A robust, wide fascial band running down the lateral aspect of the thigh. It acts as an anterolateral tension band that converts lateral bending moments on the femur into axial compressive loads.',
-    attachmentPoints: [
-      'Proximal: Tuber of the iliac crest; receives strong tendinous insertions from the Tensor Fasciae Latae (anteriorly) and Gluteus Maximus (posteriorly)',
-      'Distal: Gerdy tubercle on the anterolateral condyle of the proximal tibia and lateral patellar retinaculum'
-    ],
-    biomechanicalFunction: [
-      'Maintains lateral knee joint stability, resisting varus deformity and excessive internal tibial rotation',
-      'Assists in hip abduction and acts as an extensor of the knee in the terminal 30 degrees of extension',
-      'Shifts posterior to the lateral femoral epicondyle during knee flexion >30 degrees'
-    ],
-    jointOrStructureAssociation: 'Femoroacetabular (hip) joint and tibiofemoral (knee) joint',
-    vascularity: 'Fibrous aponeurotic tissue with rich peripheral vascular supply from lateral circumflex femoral and superior lateral genicular arteries',
-    commonPathologies: [
-      'Iliotibial Band Friction Syndrome (ITBFS): Friction or compression of the deep innervated fat pad against the lateral femoral epicondyle; prominent overuse injury in long-distance runners and cyclists',
-      'Trochanteric bursitis / Greater trochanteric pain syndrome: Repetitive friction over the greater trochanter'
-    ],
-    clinicalNotes: [
-      'Ober test is the gold-standard clinical examination for evaluating contracture or tightness of the iliotibial band and tensor fasciae latae.',
-      'Noble compression test reproduces localized pain over the lateral femoral condyle at approximately 30 degrees of knee flexion.'
-    ],
-    tags: ['it band', 'fascia lata', 'gerdy tubercle', 'runner knee', 'knee stability', 'tensor fasciae latae']
-  },
-  {
-    id: 'connective_linea_alba',
-    name: 'Linea Alba',
-    latinName: 'Linea alba',
-    commonName: 'Abdominal midline white line',
-    system: 'connective',
-    region: 'spine_trunk',
-    meshId: 't_linea_alba',
-    tissueType: 'Aponeurosis',
-    composition: 'Dense regular connective tissue composed of crisscrossing collagen fibers derived from three flat abdominal aponeuroses',
-    location: 'Anterior midline of the abdominal wall from xiphoid process to pubic symphysis',
-    description: 'A tough, fibrous cord formed by the midline decussation and interlacing fibers of the aponeuroses of the external oblique, internal oblique, and transversus abdominis muscles. It separates the paired rectus abdominis muscles.',
-    attachmentPoints: [
-      'Superior: Xiphoid process of the sternum and adjacent 7th costal cartilages',
-      'Inferior: Pubic symphysis and pubic crest'
-    ],
-    biomechanicalFunction: [
-      'Anchors the contralateral abdominal muscle groups during torso rotation, lateral flexion, and forced expiration',
-      'Maintains intra-abdominal pressure during Valsalva maneuvers (coughing, defecation, childbirth)',
-      'Stabilizes the anterior trunk wall against distraction forces'
-    ],
-    jointOrStructureAssociation: 'Rectus sheath and anterior abdominal wall musculature',
-    vascularity: 'Avascular in the midline, receiving microvascular diffusion from surrounding rectus sheath vessels',
-    commonPathologies: [
-      'Diastasis recti: Abnormal widening and thinning of the linea alba (>2 cm) without fascial disruption, frequent during late pregnancy or morbid obesity',
-      'Epigastric hernia: Defect in the supraumbilical linea alba permitting preperitoneal fat or omentum protrusion',
-      'Umbilical hernia: Herniation through the natural umbilical cicatricial ring defect within the linea alba'
-    ],
-    clinicalNotes: [
-      'Because the linea alba is virtually bloodless and contains no major nerves, the midline laparotomy is the fastest, classic surgical entry to the peritoneal cavity in trauma surgery.'
-    ],
-    tags: ['linea alba', 'abdomen', 'aponeurosis', 'rectus sheath', 'laparotomy', 'diastasis recti']
-  },
-  {
-    id: 'connective_epicranial_aponeurosis',
-    name: 'Galea Aponeurotica (Epicranial Aponeurosis)',
-    latinName: 'Galea aponeurotica',
-    commonName: 'Scalp aponeurosis',
-    system: 'connective',
-    region: 'head_neck',
-    meshId: 't_epicranial_aponeurosis_l',
-    meshIds: ['t_epicranial_aponeurosis_l', 't_epicranial_aponeurosis_r'],
-    tissueType: 'Aponeurosis',
-    composition: 'Tough, dense, inelastic sheet of collagenous connective tissue',
-    location: 'Superior calvaria beneath the hair-bearing scalp layers',
-    description: 'A helmet-like fibrous sheet that forms the third layer of the scalp (S-C-A-L-P: Skin, Connective tissue, Aponeurosis, Loose areolar tissue, Pericranium). It bridges the frontal and occipital bellies of the occipitofrontalis muscle.',
-    attachmentPoints: [
-      'Posterior: External occipital protuberance (inion) and superior nuchal line',
-      'Anterior: Extends into a narrow interval between the frontalis muscles, fusing with orbital subcutaneous tissue',
-      'Lateral: Continues over the temporal fascia as a thin layer to the zygomatic arch'
-    ],
-    biomechanicalFunction: [
-      'Transmits tension from the occipitalis to the frontalis, elevating the eyebrows and wrinkling the forehead',
-      'Acts as a defensive helmet shielding the underlying cranial bones and meninges from blunt external impacts'
-    ],
-    jointOrStructureAssociation: 'Scalp layers and epicranial musculature',
-    vascularity: 'Superficial temporal and occipital arterial networks traverse the dense connective tissue layer immediately superficial to the galea',
-    commonPathologies: [
-      'Scalp lacerations: Lacerations involving the galea gape widely due to the opposing coronal pull of the frontalis and occipitalis muscles, requiring mandatory layered suture closure',
-      'Subgaleal hematoma: Rupture of emissary veins leading to blood accumulation in the loose areolar space beneath the galea, which can cross suture lines across the entire calvaria'
-    ],
-    clinicalNotes: [
-      'The loose areolar tissue immediately beneath the galea aponeurotica is known clinically as the "danger zone of the scalp" because emissary veins can transport scalp infections into intracranial dural venous sinuses.'
-    ],
-    tags: ['scalp', 'galea', 'aponeurosis', 'cranium', 'frontalis', 'danger area']
-  },
-  {
-    id: 'connective_inguinal_ligament',
-    name: 'Inguinal Ligament (Poupart Ligament)',
-    latinName: 'Ligamentum inguinale',
-    commonName: 'Groin ligament',
-    system: 'connective',
-    region: 'pelvis_hip',
-    meshId: 't_inguinal_ligament_l',
-    meshIds: ['t_inguinal_ligament_l', 't_inguinal_ligament_r'],
+    region: 'hand_wrist',
+    meshId: 'lig_flexor_retinaculum_l',
+    meshIds: ['lig_flexor_retinaculum_l', 'lig_flexor_retinaculum_r'],
     tissueType: 'Ligament',
-    composition: 'Dense regular collagenous connective tissue formed by the thickened inferior border of the external oblique aponeurosis',
-    location: 'Anterior inferior abdominal boundary demarcating the trunk from the thigh',
-    description: 'A prominent oblique fibrous band spanning between the anterior superior iliac spine and the pubic tubercle. It forms the floor of the inguinal canal and marks the critical boundary between the abdominal cavity and femoral triangle.',
+    description: 'Thick, dense fibrous band arching over the palmar aspect of the carpal bones, transforming the deep carpal arch into the osteofibrous carpal tunnel.',
+    location: 'Palmar wrist spanning scaphoid & trapezium radially to pisiform & hamate ulnarly',
+    composition: 'Dense regular parallel Type I collagen fibers with elastin bundles',
     attachmentPoints: [
-      'Lateral: Anterior Superior Iliac Spine (ASIS)',
-      'Medial: Pubic tubercle of the pubic bone; expands laterally as the lacunar ligament (Gimbernat) and pectineal ligament (Cooper)'
+      'Radial side: Tubercle of scaphoid and crest of trapezium',
+      'Ulnar side: Pisiform bone and hook (hamulus) of hamate',
     ],
     biomechanicalFunction: [
-      'Anchors the inferior anterior abdominal wall musculature and fascia transversalis',
-      'Forms a natural retinacular arch protecting traversing neurovascular structures (Femoral Nerve, Femoral Artery, Femoral Vein, Psoas major muscle)'
+      'Forms the rigid roof of the carpal tunnel, preventing bowstringing of the nine long flexor tendons during wrist and finger flexion',
+      'Acts as an origin for the thenar and hypothenar intrinsic hand muscles',
     ],
-    jointOrStructureAssociation: 'Pelvic girdle, inguinal canal, and femoral triangle',
-    vascularity: 'Superficial and deep circumflex iliac vessels',
+    jointOrStructureAssociation: 'Carpal tunnel, carpal bones, median nerve, flexor digitorum superficialis & profundus',
+    vascularity: 'Vascularized by superficial palmar arterial branches; dense fibrous core has low metabolic turnover',
     commonPathologies: [
-      'Inguinal hernia: Occurs superior to the inguinal ligament (indirect via deep inguinal ring, or direct through Hesselbach triangle)',
-      'Femoral hernia: Protrusion of viscera inferior to the inguinal ligament through the femoral ring into the femoral canal (high strangulation risk)',
-      'Meralgia paresthetica: Entrapment of the lateral femoral cutaneous nerve as it passes under the lateral attachment of the inguinal ligament'
+      'Carpal Tunnel Syndrome (CTS) — compression of the median nerve under the flexor retinaculum causing paresthesia in radial 3.5 digits',
+      'Surgical transection (carpal tunnel release) to decompress the median nerve',
     ],
-    clinicalNotes: [
-      'The midpoint of the inguinal ligament marks the surface landmark for palpating the femoral pulse and cannulating the femoral artery/vein during cardiac catheterization.'
+  },
+  {
+    id: 'extensor_retinaculum_l',
+    name: 'Extensor Retinaculum of Left Wrist',
+    latinName: 'Retinaculum musculorum extensorum carpi sinistri',
+    commonName: 'Dorsal carpal ligament',
+    system: 'connective',
+    region: 'hand_wrist',
+    meshId: 'lig_extensor_retinaculum_l',
+    meshIds: ['lig_extensor_retinaculum_l', 'lig_extensor_retinaculum_r'],
+    tissueType: 'Ligament',
+    description: 'Strong, oblique fibrous band across the dorsal aspect of the wrist, anchoring extensor tendons into six distinct synovial compartments.',
+    location: 'Dorsal wrist crossing distal radius to styloid process of ulna, triquetrum and pisiform',
+    composition: 'Dense Type I collagen sheet partitioned by internal fibrous septa lined with synovial endothelia',
+    attachmentPoints: [
+      'Lateral: Distal anterior border of radius',
+      'Medial: Styloid process of ulna, triquetrum, and pisiform bone',
     ],
-    tags: ['groin', 'inguinal ligament', 'poupart', 'hernia', 'femoral triangle', 'asis']
+    biomechanicalFunction: [
+      'Prevents bowstringing of dorsal extensor tendons during wrist extension',
+      'Divides the extensor tendons into six anatomical compartments (e.g., APL/EPB in compartment 1, EDC in compartment 4)',
+    ],
+    jointOrStructureAssociation: 'Radiocarpal joint, distal radioulnar joint, dorsal carpus',
+    vascularity: 'Supplied by dorsal carpal network from radial and ulnar arteries',
+    commonPathologies: [
+      'De Quervain tenosynovitis (stenosing tenosynovitis of first extensor compartment beneath the retinaculum)',
+      'Extensor tendon subluxation following dorsal retinacular disruption',
+    ],
+  },
+  {
+    id: 'palmar_aponeurosis_l',
+    name: 'Palmar Aponeurosis of Left Hand',
+    latinName: 'Aponeurosis palmaris sinistra',
+    commonName: 'Palmar fascia',
+    system: 'connective',
+    region: 'hand_wrist',
+    meshId: 'lig_palmar_aponeurosis_l',
+    meshIds: ['lig_palmar_aponeurosis_l', 'lig_palmar_aponeurosis_r'],
+    tissueType: 'Aponeurosis',
+    description: 'Dense triangular sheet of fibrous connective tissue covering the central compartment of the palm, intimately continuous with palmaris longus.',
+    location: 'Superficial palm directly beneath subcutaneous adipose tissue',
+    composition: 'Type I collagen arranged in longitudinal pretendinous bands and transverse fibers',
+    attachmentPoints: [
+      'Proximal apex: Distal flexor retinaculum and tendon of palmaris longus',
+      'Distal base: Four diverging pretendinous slips attaching to bases of proximal phalanges and deep transverse metacarpal ligaments (digits 2–5)',
+    ],
+    biomechanicalFunction: [
+      'Protects underlying palmar neurovascular arches and flexor tendons',
+      'Provides firm tethering for palmar skin, dramatically increasing grip shear stability',
+    ],
+    jointOrStructureAssociation: 'Metacarpophalangeal joints, palmar arches, flexor tendons',
+    vascularity: 'Avascular central core; nourished via surrounding subcutaneous capillary plexus',
+    commonPathologies: [
+      'Dupuytren contracture — fibroproliferative disorder causing progressive nodular thickening and flexion contractures of the ring and little fingers',
+      'Palmar fascial tears from high-velocity impact trauma',
+    ],
+  },
+  {
+    id: 'digital_pulleys_l',
+    name: 'Digital Flexor Pulley System of Left Hand (A2 & A4 Annular Pulleys)',
+    latinName: 'Vagina fibrosa digitorum manus (pars anularis)',
+    commonName: 'Finger annular & cruciate pulleys (A2, A4)',
+    system: 'connective',
+    region: 'hand_wrist',
+    meshId: 'lig_digital_pulleys_l',
+    meshIds: ['lig_digital_pulleys_l', 'lig_digital_pulleys_r'],
+    tissueType: 'Ligament',
+    description: 'High-strength biomechanical fibrous pulleys that firmly bind deep and superficial flexor tendons directly against the volar phalangeal shafts.',
+    location: 'Volar surface of digits 2–5 along proximal and middle phalanges',
+    composition: 'Dense transverse collagenous rings capable of resisting over 400 N of bowstringing force',
+    attachmentPoints: [
+      'A2 Pulley: Volar margins of proximal phalanx shaft',
+      'A4 Pulley: Volar periosteum of middle phalanx shaft',
+      'Cruciate pulleys (C1–C3): Interposed between annular pulleys over joint capsules',
+    ],
+    biomechanicalFunction: [
+      'Prevents tendon bowstringing during finger flexion, optimizing excursion and mechanical advantage',
+      'Maximizes fingertip force generation during gripping and climbing',
+    ],
+    jointOrStructureAssociation: 'Proximal interphalangeal (PIP) and distal interphalangeal (DIP) joints, FDP and FDS tendons',
+    vascularity: 'Supplied via vincula tendinum and digital periosteal vessels',
+    commonPathologies: [
+      'A2 pulley rupture — classic high-force injury in rock climbers causing acute volar swelling and visible bowstringing',
+      'Trigger finger (stenosing tenosynovitis at the A1 pulley level)',
+    ],
+  },
+  {
+    id: 'radiocarpal_palmar_l',
+    name: 'Palmar Radiocarpal Ligament of Left Wrist',
+    latinName: 'Ligamentum radiocarpale palmare sinistrum',
+    commonName: 'Volar radiocarpal ligament complex',
+    system: 'connective',
+    region: 'hand_wrist',
+    meshId: 'lig_radiocarpal_palmar_l',
+    meshIds: ['lig_radiocarpal_palmar_l', 'lig_radiocarpal_palmar_r'],
+    tissueType: 'Ligament',
+    description: 'Broad, thick ligamentous sheet on the volar wrist comprising radioscaphocapitate, long radiolunate, and short radiolunate fascicles.',
+    location: 'Anterior distal radius across carpal bones to capitate',
+    composition: 'Dense collagenous capsular reinforcement with mechanoreceptors for proprioception',
+    attachmentPoints: [
+      'Proximal: Anterior distal margin of radius and radial styloid process',
+      'Distal: Scaphoid, lunate, and capitate bones',
+    ],
+    biomechanicalFunction: [
+      'Primary passive stabilizer resisting dorsal carpal dislocation and hyperextension',
+      'Ensures carpal tracking during radial and ulnar deviation',
+    ],
+    jointOrStructureAssociation: 'Radiocarpal joint, midcarpal joint',
+    vascularity: 'Anterior carpal arterial arch',
+    commonPathologies: [
+      'Volar carpal ligament tears during FOOSH (fall onto outstretched hand)',
+      'Scapholunate advanced collapse (SLAC) wrist following carpal ligament dissociation',
+    ],
+  },
+  {
+    id: 'mcp_collaterals_l',
+    name: 'Collateral Ligaments of Left Metacarpophalangeal Joints',
+    latinName: 'Ligamenta collateralia articulationum metacarpophalangealium sinistra',
+    commonName: 'MCP joint collateral ligaments (including Gamekeeper / Skier ligament)',
+    system: 'connective',
+    region: 'hand_wrist',
+    meshId: 'lig_mcp_collaterals_l',
+    meshIds: ['lig_mcp_collaterals_l', 'lig_mcp_collaterals_r'],
+    tissueType: 'Ligament',
+    description: 'Thick, cord-like bands on medial and lateral sides of each metacarpophalangeal joint, tightening in flexion due to cam-shaped metacarpal heads.',
+    location: 'Sides of MCP joints of digits 1–5',
+    composition: 'High-tensile parallel Type I collagen fibers',
+    attachmentPoints: [
+      'Proximal: Dorsal tubercle on the side of each metacarpal head',
+      'Distal: Palmar aspect of the base of each proximal phalanx and palmar plate',
+    ],
+    biomechanicalFunction: [
+      'Provide strict lateral stability, preventing abduction/adduction when MCP joints are flexed at 90 degrees',
+      'Relax in extension to permit finger splaying',
+    ],
+    jointOrStructureAssociation: 'Metacarpophalangeal joints 1–5, palmar (volar) plates',
+    vascularity: 'Palmar digital arteries',
+    commonPathologies: [
+      'Skier thumb / Gamekeeper thumb — traumatic rupture of thumb MCP ulnar collateral ligament (UCL), frequently with Stener lesion',
+      'Collateral ligament contractures resulting in joint stiffness following prolonged immobilization',
+    ],
   },
 
-  // --- CARTILAGES ---
+  // ==========================================
+  // KNEE JOINT CONNECTIVE TISSUES
+  // ==========================================
   {
-    id: 'connective_costal_cartilage',
-    name: 'Costal Cartilages (1–10)',
-    latinName: 'Cartilagines costales',
-    commonName: 'Rib cage cartilages',
+    id: 'patellar_ligament_l',
+    name: 'Patellar Ligament of Left Knee (Ligamentum Patellae)',
+    latinName: 'Ligamentum patellae sinistrum',
+    commonName: 'Patellar tendon',
     system: 'connective',
-    region: 'thoracic_cage',
-    meshId: 'b_cc1_l',
-    meshIds: [
-      'b_cc1_l', 'b_cc1_r', 'b_cc2_l', 'b_cc2_r', 'b_cc3_l', 'b_cc3_r',
-      'b_cc4_l', 'b_cc4_r', 'b_cc5_l', 'b_cc5_r', 'b_cc6_l', 'b_cc6_r',
-      'b_cc7_l', 'b_cc7_r', 'b_cc8_l', 'b_cc8_r', 'b_cc9_l', 'b_cc9_r',
-      'b_cc10_l', 'b_cc10_r'
-    ],
-    tissueType: 'Cartilage',
-    composition: 'Specialized Hyaline Cartilage composed of chondrocytes, Type II Collagen fibers, and chondroitin sulfate proteoglycan matrix',
-    location: 'Anterior ends of ribs 1–10 articulating with the sternum',
-    description: 'Segments of resilient hyaline cartilage that prolong the anterior ends of the ribs. Cartilages 1–7 articulate directly with the sternum (true ribs), while cartilages 8–10 articulate with the cartilage immediately above to form the costal arch (false ribs).',
+    region: 'knee',
+    meshId: 'lig_patellar_l',
+    meshIds: ['lig_patellar_l', 'lig_patellar_r'],
+    tissueType: 'Ligament',
+    description: 'Extremely strong, dense collagenous band continuing the central tendon of the quadriceps femoris down to the tibia.',
+    location: 'Anterior knee spanning inferior patellar pole to tibial tuberosity',
+    composition: 'Dense regular parallel Type I collagen fascicles with crimped pattern; capable of withstanding forces over 10 times body weight',
     attachmentPoints: [
-      'Lateral: Costochondral junction at the anterior cup of each rib',
-      'Medial: Sternocostal facets along the lateral borders of the manubrium and sternal body (ribs 1–7)'
+      'Superior: Apex and lower border of patella',
+      'Inferior: Tibial tuberosity of proximal tibia',
     ],
     biomechanicalFunction: [
-      'Provides structural elasticity enabling thoracic cavity expansion and recoil during tidal and forced ventilation (pump-handle and bucket-handle breathing mechanics)',
-      'Absorbs kinetic impact energy to shield the underlying heart, lungs, and mediastinal vessels from blunt trauma'
+      'Transmits powerful tensile extension forces from the quadriceps muscle group to extend the lower leg',
+      'Maintains patellar tracking and prevents superior patellar displacement',
     ],
-    jointOrStructureAssociation: 'Sternocostal, costochondral, and interchondral synovial joints',
-    vascularity: 'Avascular; nourished entirely by perichondrial capillary diffusion and synovial fluid exchange',
+    jointOrStructureAssociation: 'Patellofemoral and tibiofemoral joints, infrapatellar fat pad (Hoffa fat pad)',
+    vascularity: 'Supplied by genicular arterial anastomotic plexus (lateral and medial inferior genicular arteries)',
     commonPathologies: [
-      'Costochondritis: Benign inflammatory condition causing localized anterior chest pain and tenderness, often mimicking acute coronary syndrome',
-      'Tietze syndrome: Painful swelling of the upper costochondral junctions (usually 2nd or 3rd ribs) with erythema and warmth',
-      'Costochondral separation / dislocation: Traumatic detachment of the rib from its cartilage, characterized by severe localized breathing pain'
+      'Patellar tendinopathy / Jumper knee (microtears and mucoid degeneration at inferior patellar pole)',
+      'Complete patellar tendon rupture (loss of active leg extension, high-riding patella patella alta)',
+      'Osgood-Schlatter disease (traction apophysitis at the tibial tuberosity insertion)',
     ],
-    clinicalNotes: [
-      'Costal cartilage naturally undergoes progressive focal calcification with advancing age, which becomes visible on routine chest radiographs and reduces chest wall compliance in elderly patients.',
-      'Autologous costal cartilage grafts are widely utilized in reconstructive plastic surgery for microtia ear reconstruction and complex rhinoplasty.'
-    ],
-    tags: ['costal cartilage', 'ribs', 'sternum', 'hyaline cartilage', 'costochondritis', 'respiration']
   },
   {
-    id: 'connective_intervertebral_discs',
-    name: 'Intervertebral Discs (C2–S1)',
-    latinName: 'Disci intervertebrales',
-    commonName: 'Spinal discs',
+    id: 'mcl_knee_l',
+    name: 'Medial Collateral Ligament of Left Knee (Tibial Collateral Ligament)',
+    latinName: 'Ligamentum collaterale tibiale sinistrum',
+    commonName: 'MCL of knee',
     system: 'connective',
-    region: 'spine_trunk',
-    meshId: 'b_disc_l4_l5',
-    meshIds: [
-      'b_disc_c2_c3', 'b_disc_c3_c4', 'b_disc_c4_c5', 'b_disc_c5_c6', 'b_disc_c6_c7', 'b_disc_c7_t1',
-      'b_disc_t1_t2', 'b_disc_t2_t3', 'b_disc_t3_t4', 'b_disc_t4_t5', 'b_disc_t5_t6', 'b_disc_t6_t7',
-      'b_disc_t7_t8', 'b_disc_t8_t9', 'b_disc_t9_t10', 'b_disc_t10_t11', 'b_disc_t11_t12', 'b_disc_t12_l1',
-      'b_disc_l1_l2', 'b_disc_l2_l3', 'b_disc_l3_l4', 'b_disc_l4_l5', 'b_disc_l5_s1'
-    ],
-    tissueType: 'Cartilage',
-    composition: 'Dual fibrocartilage structure: peripheral Anulus Fibrosus (concentric lamellae of Type I Collagen) and central Nucleus Pulposus (hydrated proteoglycan gel with Type II Collagen)',
-    location: 'Between adjacent vertebral bodies from C2 to the sacrum (account for 25% of total spinal column length)',
-    description: 'Twenty-three fibrocartilaginous symphyses uniting adjacent vertebral bodies. They provide mechanical shock absorption, permit multi-axial spinal movements, and prevent bone-on-bone abrasion.',
+    region: 'knee',
+    meshId: 'lig_mcl_l',
+    meshIds: ['lig_mcl_l', 'lig_mcl_r'],
+    tissueType: 'Ligament',
+    description: 'Broad, flat, triangular ligament reinforcing the medial knee capsule, consisting of deep (meniscofemoral/meniscotibial) and superficial components.',
+    location: 'Medial side of knee joint connecting medial femoral epicondyle to medial tibia',
+    composition: 'Type I collagen fibers organized in superficial parallel and deep capsular layers',
     attachmentPoints: [
-      'Superior and Inferior: Hyaline cartilaginous vertebral endplates fused to subchondral bone of adjacent vertebral bodies',
-      'Anterior and Posterior: Anchored to the Anterior and Posterior Longitudinal Ligaments'
+      'Proximal: Medial femoral epicondyle just below the adductor tubercle',
+      'Distal: Medial condyle and anteromedial shaft of tibia (deep to pes anserinus)',
     ],
     biomechanicalFunction: [
-      'Hydraulic shock absorption: Distributes heavy axial compressive forces uniformly across the vertebral body endplates',
-      'Permits multi-directional segmental flexibility (flexion, extension, lateral bending, axial rotation) while restraining excessive shear'
+      'Primary static restraint against valgus (inward collapse) stress across all flexion angles',
+      'Secondary restraint against external tibial rotation and anterior tibial displacement',
     ],
-    jointOrStructureAssociation: 'Intervertebral symphyses (amphiarthroses)',
-    vascularity: 'The largest avascular structures in the entire human body; nutrition occurs solely via passive solute diffusion across the vertebral endplates',
+    jointOrStructureAssociation: 'Medial meniscus (firmly attached to deep MCL layer), tibiofemoral joint',
+    vascularity: 'Relatively rich blood supply from superior and inferior medial genicular arteries, promoting robust healing potential',
     commonPathologies: [
-      'Herniated Nucleus Pulposus (HNP): Rupture of the posterior anulus fibrosus with protrusion of nuclear material into the spinal canal or intervertebral foramen, causing nerve root compression (radiculopathy / sciatica)',
-      'Degenerative Disc Disease (DDD): Age-related dehydration and loss of proteoglycans leading to reduced disc height, osteophyte formation, and facet arthrosis',
-      'Cauda equina syndrome: Massive central lumbar disc herniation compressing multiple lumbosacral roots, causing urinary retention, saddle anesthesia, and bilateral lower extremity weakness (surgical emergency)'
+      'MCL Sprain / Tear (Grades I–III) caused by lateral impact valgus stress',
+      'O’Donoghue Unhappy Triad (concomitant tears of ACL, MCL, and medial meniscus)',
+      'Pellegrini-Stieda syndrome (post-traumatic calcification at the proximal femoral attachment)',
     ],
-    clinicalNotes: [
-      'Over 90% of all spinal disc herniations occur at the lower lumbar levels (L4–L5 and L5–S1) due to the immense mechanical torque concentrated at the lumbosacral transition zone.'
-    ],
-    tags: ['spine', 'intervertebral disc', 'annulus fibrosus', 'nucleus pulposus', 'sciatica', 'shock absorber']
   },
   {
-    id: 'connective_pubic_symphysis',
-    name: 'Pubic Symphysis Fibrocartilaginous Disc',
-    latinName: 'Discus interpubicus',
-    commonName: 'Pubic joint disc',
+    id: 'lcl_knee_l',
+    name: 'Lateral Collateral Ligament of Left Knee (Fibular Collateral Ligament)',
+    latinName: 'Ligamentum collaterale fibulare sinistrum',
+    commonName: 'LCL of knee',
+    system: 'connective',
+    region: 'knee',
+    meshId: 'lig_lcl_l',
+    meshIds: ['lig_lcl_l', 'lig_lcl_r'],
+    tissueType: 'Ligament',
+    description: 'Round, cord-like extra-articular ligament standing completely free from the knee joint capsule and lateral meniscus.',
+    location: 'Lateral aspect of knee spanning lateral femoral epicondyle to fibular head',
+    composition: 'Dense, cord-like bundle of Type I collagen fibers',
+    attachmentPoints: [
+      'Proximal: Lateral femoral epicondyle above the groove for the popliteus tendon',
+      'Distal: Lateral side of the head of the fibula (splitting tendon of biceps femoris)',
+    ],
+    biomechanicalFunction: [
+      'Primary passive restraint against varus (outward bowing) angulation of the knee',
+      'Restrains posterolateral tibial rotation along with the popliteofibular ligament',
+    ],
+    jointOrStructureAssociation: 'Posterolateral corner (PLC) of knee, biceps femoris tendon, lateral meniscus',
+    vascularity: 'Supplied by lateral inferior and superior genicular arteries',
+    commonPathologies: [
+      'LCL rupture from high-energy varus hyperextension forces (e.g., motor vehicle collisions or soccer tackles)',
+      'Posterolateral corner complex instability requiring surgical reconstruction',
+    ],
+  },
+  {
+    id: 'acl_knee_l',
+    name: 'Anterior Cruciate Ligament of Left Knee (ACL)',
+    latinName: 'Ligamentum cruciatum anterius sinistrum',
+    commonName: 'ACL',
+    system: 'connective',
+    region: 'knee',
+    meshId: 'lig_acl_l',
+    meshIds: ['lig_acl_l', 'lig_acl_r'],
+    tissueType: 'Ligament',
+    description: 'Intra-articular but extrasynovial cruciate ligament passing obliquely from the posteromedial aspect of the lateral femoral condyle to anterior intercondylar tibia.',
+    location: 'Center of knee intercondylar notch crossing anteriorly and medially',
+    composition: 'Type I collagen arranged in anteromedial (AM) and posterolateral (PL) functional bundles',
+    attachmentPoints: [
+      'Proximal: Medial surface of the lateral femoral condyle (posterior intercondylar notch)',
+      'Distal: Anterior intercondylar area of tibia between medial and lateral meniscal horns',
+    ],
+    biomechanicalFunction: [
+      'Provides 85% of total passive resistance against anterior tibial translation',
+      'Resists internal tibial rotation and valgus/varus rotation in full knee extension',
+    ],
+    jointOrStructureAssociation: 'Intercondylar notch, PCL, medial & lateral menisci',
+    vascularity: 'Middle genicular artery; blood supply is disrupted during rupture, leading to minimal spontaneous healing capability',
+    commonPathologies: [
+      'ACL tear / rupture — classic non-contact pivoting injury with audible pop, acute hemarthrosis, and positive Lachman / Pivot-shift tests',
+      'Surgical reconstruction using bone-patellar tendon-bone (BTB) or hamstring autografts',
+    ],
+  },
+  {
+    id: 'pcl_knee_l',
+    name: 'Posterior Cruciate Ligament of Left Knee (PCL)',
+    latinName: 'Ligamentum cruciatum posterius sinistrum',
+    commonName: 'PCL',
+    system: 'connective',
+    region: 'knee',
+    meshId: 'lig_pcl_l',
+    meshIds: ['lig_pcl_l', 'lig_pcl_r'],
+    tissueType: 'Ligament',
+    description: 'Thickest and strongest intra-articular ligament of the knee, passing anteromedially from posterior tibial intercondylar fossa to medial femoral condyle.',
+    location: 'Center of knee intercondylar notch posterior to ACL',
+    composition: 'Heavy Type I collagen organized into anterolateral (AL) and posteromedial (PM) bundles',
+    attachmentPoints: [
+      'Proximal: Anterolateral surface of medial femoral condyle',
+      'Distal: Posterior intercondylar area of tibia below the articular margin',
+    ],
+    biomechanicalFunction: [
+      'Primary static restraint against posterior tibial translation relative to the femur (providing ~95% of restraint)',
+      'Assists in guiding femoral roll-and-glide during deep knee flexion',
+    ],
+    jointOrStructureAssociation: 'Tibiofemoral joint, meniscofemoral ligaments (Humphry and Wrisberg)',
+    vascularity: 'Middle genicular artery and posterior capsular vessels',
+    commonPathologies: [
+      'Dashboard injury (posterior force to proximal tibia in flexed knee during collision)',
+      'Hyperextension knee injuries; diagnosed with Posterior Drawer test and Posterior Sag sign',
+    ],
+  },
+  {
+    id: 'meniscus_medial_l',
+    name: 'Medial Meniscus of Left Knee',
+    latinName: 'Meniscus medialis sinister',
+    commonName: 'Medial knee cartilage pad',
+    system: 'connective',
+    region: 'knee',
+    meshId: 'lig_meniscus_medial_l',
+    meshIds: ['lig_meniscus_medial_l', 'lig_meniscus_medial_r'],
+    tissueType: 'Cartilage',
+    description: 'C-shaped fibrocartilaginous shock absorber resting on the medial tibial plateau, wider posteriorly and intimately attached to the deep MCL.',
+    location: 'Medial compartment between medial femoral condyle and medial tibial plateau',
+    composition: 'Fibrocartilage with circumferential Type I collagen bundles and radial tie fibers',
+    attachmentPoints: [
+      'Anterior horn: Anterior intercondylar fossa of tibia',
+      'Posterior horn: Posterior intercondylar fossa of tibia',
+      'Periphery: Attached to capsule and deep MCL layer (coronary ligaments)',
+    ],
+    biomechanicalFunction: [
+      'Distributes tibiofemoral compressive loads over a 3x larger contact area, reducing peak articular cartilage stress',
+      'Improves joint congruency and facilitates joint lubrication',
+    ],
+    jointOrStructureAssociation: 'Medial femoral condyle, medial tibial plateau, MCL, transverse knee ligament',
+    vascularity: 'Vascularized only in the peripheral 10–30% (red-red zone); inner 70% is completely avascular (white-white zone) and nourished by synovial fluid diffusion',
+    commonPathologies: [
+      'Bucket-handle tear causing acute joint locking and inability to fully extend the knee',
+      'Degenerative horizontal cleavage tears in older adults',
+    ],
+  },
+  {
+    id: 'meniscus_lateral_l',
+    name: 'Lateral Meniscus of Left Knee',
+    latinName: 'Meniscus lateralis sinister',
+    commonName: 'Lateral knee cartilage ring',
+    system: 'connective',
+    region: 'knee',
+    meshId: 'lig_meniscus_lateral_l',
+    meshIds: ['lig_meniscus_lateral_l', 'lig_meniscus_lateral_r'],
+    tissueType: 'Cartilage',
+    description: 'Nearly circular fibrocartilaginous disc covering a greater portion (~84%) of the lateral tibial plateau than the medial meniscus, with greater mobility.',
+    location: 'Lateral compartment between lateral femoral condyle and lateral tibial plateau',
+    composition: 'Dense fibrocartilage with circumferential collagen rings and glycosaminoglycans',
+    attachmentPoints: [
+      'Anterior horn: Anterior to intercondylar eminence close to ACL',
+      'Posterior horn: Posterior to intercondylar eminence anterior to PCL',
+      'Unattached to LCL (separated by popliteus tendon hiatus)',
+    ],
+    biomechanicalFunction: [
+      'Transmits up to 70% of lateral compartment compressive force during weight-bearing',
+      'Undergoes substantial anteroposterior translation (~11 mm) during flexion',
+    ],
+    jointOrStructureAssociation: 'Lateral femoral condyle, lateral tibial plateau, popliteus tendon',
+    vascularity: 'Peripheral vascular zone from lateral genicular arteries',
+    commonPathologies: [
+      'Radial and complex tears in athletes during twisting pivoting sports',
+      'Discoid meniscus — congenital anatomical variant where meniscus is disc-like, prone to snapping and tearing in children',
+    ],
+  },
+
+  // ==========================================
+  // SHOULDER AND ELBOW CONNECTIVE TISSUES
+  // ==========================================
+  {
+    id: 'glenohumeral_capsule_l',
+    name: 'Glenohumeral Joint Capsule and Ligaments of Left Shoulder',
+    latinName: 'Capsula articularis et ligamenta glenohumeralia sinistra',
+    commonName: 'Shoulder joint capsule (Superior, Middle, Inferior GH ligaments)',
+    system: 'connective',
+    region: 'shoulder_arm',
+    meshId: 'lig_glenohumeral_capsule_l',
+    meshIds: ['lig_glenohumeral_capsule_l', 'lig_glenohumeral_capsule_r'],
+    tissueType: 'Ligament',
+    description: 'Loose, spacious fibrous envelope enclosing the ball-and-socket glenohumeral articulation, reinforced anteriorly by three glenohumeral ligament bands.',
+    location: 'Circumscribes glenoid rim and labrum to anatomical neck of humerus',
+    composition: 'Multi-directional Type I collagen fibers with elastomeric compliance',
+    attachmentPoints: [
+      'Medial: Circumference of glenoid cavity outside glenoid labrum',
+      'Lateral: Anatomical neck of humerus and intertubercular sulcus',
+    ],
+    biomechanicalFunction: [
+      'Inferior Glenohumeral Ligament Complex (IGHLC) is the primary static stabilizer against anterior shoulder dislocation at 90 deg abduction',
+      'Superior GH ligament prevents inferior subluxation in adducted arm',
+    ],
+    jointOrStructureAssociation: 'Glenoid labrum, humeral head, rotator cuff tendons (supraspinatus, subscapularis, infraspinatus)',
+    vascularity: 'Circumflex humeral arteries (anterior and posterior)',
+    commonPathologies: [
+      'Bankart lesion (avulsion of anterior-inferior glenoid labrum and IGHL following anterior shoulder dislocation)',
+      'Adhesive capsulitis / Frozen shoulder (fibrotic thickening and contracture of the glenohumeral capsule causing severe global loss of motion)',
+    ],
+  },
+  {
+    id: 'coracoacromial_l',
+    name: 'Coracoacromial Ligament of Left Shoulder',
+    latinName: 'Ligamentum coracoacromiale sinistrum',
+    commonName: 'Coracoacromial arch roof',
+    system: 'connective',
+    region: 'shoulder_arm',
+    meshId: 'lig_coracoacromial_l',
+    meshIds: ['lig_coracoacromial_l', 'lig_coracoacromial_r'],
+    tissueType: 'Ligament',
+    description: 'Strong, flat triangular ligament spanning the coracoid process and acromion of the scapula, forming a protective osseoligamentous roof over the humeral head.',
+    location: 'Superior shoulder bridging coracoid apex to acromion anterior margin',
+    composition: 'Dense Type I collagen sheet with high tensile stiffness',
+    attachmentPoints: [
+      'Medial apex: Lateral border of coracoid process of scapula',
+      'Lateral base: Apex and anterior margin of acromion of scapula',
+    ],
+    biomechanicalFunction: [
+      'Forms the coracoacromial arch, preventing superior dislocation of the humeral head',
+      'Provides mechanical protection for the underlying subacromial bursa and supraspinatus tendon',
+    ],
+    jointOrStructureAssociation: 'Subacromial space, supraspinatus tendon, subacromial bursa',
+    vascularity: 'Acromial branch of thoracoacromial artery',
+    commonPathologies: [
+      'Subacromial impingement syndrome — compression and fraying of the supraspinatus tendon against the rigid coracoacromial arch during overhead abduction',
+      'Coracoacromial ligament release during subacromial decompression surgery',
+    ],
+  },
+  {
+    id: 'coracoclavicular_l',
+    name: 'Coracoclavicular Ligaments of Left Shoulder (Trapezoid & Conoid Ligaments)',
+    latinName: 'Ligamentum coracoclaviculare sinistrum (pars trapezoidea et conoidea)',
+    commonName: 'CC ligaments (primary vertical stabilizer of shoulder girdle)',
+    system: 'connective',
+    region: 'shoulder_arm',
+    meshId: 'lig_coracoclavicular_l',
+    meshIds: ['lig_coracoclavicular_l', 'lig_coracoclavicular_r'],
+    tissueType: 'Ligament',
+    description: 'Extremely strong pair of ligaments (medial conoid and lateral trapezoid) binding the coracoid process of the scapula firmly to the undersurface of the clavicle.',
+    location: 'Between coracoid process of scapula and inferior surface of lateral clavicle',
+    composition: 'Dense Type I collagen fibers forming two discrete geometric bands',
+    attachmentPoints: [
+      'Inferior: Posterior upper root of coracoid process',
+      'Superior: Conoid tubercle and trapezoid line on inferior lateral clavicle',
+    ],
+    biomechanicalFunction: [
+      'Primary suspensory ligament of the upper limb; maintains vertical and horizontal stability of the acromioclavicular junction',
+      'Transmits upward scapular rotation forces directly to the clavicle during arm elevation',
+    ],
+    jointOrStructureAssociation: 'Acromioclavicular joint, clavicle, scapula',
+    vascularity: 'Suprascapular and thoracoacromial arteries',
+    commonPathologies: [
+      'High-grade Acromioclavicular (AC) joint separation (Rockwood classification Types III–VI involves complete rupture of CC ligaments causing prominent step deformity)',
+    ],
+  },
+  {
+    id: 'ucl_elbow_l',
+    name: 'Ulnar Collateral Ligament of Left Elbow (Tommy John Ligament)',
+    latinName: 'Ligamentum collaterale ulnare articulationis cubiti sinistri',
+    commonName: 'Tommy John ligament / Medial collateral ligament of elbow',
+    system: 'connective',
+    region: 'shoulder_arm',
+    meshId: 'lig_ucl_elbow_l',
+    meshIds: ['lig_ucl_elbow_l', 'lig_ucl_elbow_r'],
+    tissueType: 'Ligament',
+    description: 'Thick triangular ligament on the medial elbow consisting of anterior, posterior, and transverse bundles; the anterior bundle is the primary valgus stabilizer.',
+    location: 'Medial elbow spanning medial humeral epicondyle to coronoid process of ulna',
+    composition: 'High-tensile parallel Type I collagen fibers',
+    attachmentPoints: [
+      'Proximal: Anteroinferior surface of medial epicondyle of humerus',
+      'Distal: Sublime tubercle on the medial coronoid process of ulna',
+    ],
+    biomechanicalFunction: [
+      'Resists extreme valgus stress across the elbow joint during overhead throwing activities (e.g., baseball pitching)',
+      'Provides primary stability from 20 to 120 degrees of elbow flexion',
+    ],
+    jointOrStructureAssociation: 'Humeroulnar joint, ulnar nerve (passes directly behind posterior bundle)',
+    vascularity: 'Superior and inferior ulnar collateral arteries',
+    commonPathologies: [
+      'UCL tear / chronic valgus overload in baseball pitchers and throwing athletes',
+      'Tommy John Surgery (surgical reconstruction of the anterior bundle using palmaris longus or gracilis tendon autograft)',
+    ],
+  },
+  {
+    id: 'annular_radius_l',
+    name: 'Annular Ligament of Left Radius',
+    latinName: 'Ligamentum anulare radii sinistrum',
+    commonName: 'Annular ligament of radial head',
+    system: 'connective',
+    region: 'shoulder_arm',
+    meshId: 'lig_annular_radius_l',
+    meshIds: ['lig_annular_radius_l', 'lig_annular_radius_r'],
+    tissueType: 'Ligament',
+    description: 'Strong fibrous collar encircling 80% of the head of the radius, lined internally with smooth synovial fibrocartilage to allow rotation without friction.',
+    location: 'Proximal radioulnar joint encircling radial head and neck',
+    composition: 'Fibroelastic circular collagen band lined with articular cartilage-like synovium',
+    attachmentPoints: [
+      'Anterior and posterior margins of radial notch of ulna, forming a complete osteoligamentous ring',
+    ],
+    biomechanicalFunction: [
+      'Securely anchors the radial head against the ulna during forearm pronation and supination',
+      'Prevents lateral or distal dislocation of the radial head',
+    ],
+    jointOrStructureAssociation: 'Proximal radioulnar joint, humeroradial joint',
+    vascularity: 'Radial recurrent and interosseous recurrent arteries',
+    commonPathologies: [
+      'Nursemaid elbow (subluxation of the radial head beneath the annular ligament in young children from sudden longitudinal traction on an extended pronated arm)',
+    ],
+  },
+
+  // ==========================================
+  // PELVIS AND HIP CONNECTIVE TISSUES
+  // ==========================================
+  {
+    id: 'iliofemoral_ligament_l',
+    name: 'Iliofemoral Ligament of Left Hip (Y-Ligament of Bigelow)',
+    latinName: 'Ligamentum iliofemorale sinistrum',
+    commonName: 'Y-ligament of Bigelow / Strongest ligament in human body',
     system: 'connective',
     region: 'pelvis_hip',
-    meshId: 'b_interpubic_disc',
-    tissueType: 'Cartilage',
-    composition: 'Thick fibrocartilaginous plate with a rudimentary non-synovial central fluid cleft',
-    location: 'Anterior midline of the pelvic ring uniting the left and right pubic bodies',
-    description: 'A nonsynovial amphiarthrodial joint connecting the pubic bones. The interpubic disc is firmly reinforced by the superior pubic ligament and the arcuate (inferior) pubic ligament.',
+    meshId: 'lig_iliofemoral_l',
+    meshIds: ['lig_iliofemoral_l', 'lig_iliofemoral_r'],
+    tissueType: 'Ligament',
+    description: 'Inverted Y-shaped ligament reinforcing the anterior hip capsule, capable of resisting tensile forces exceeding 350 kg (3,500 N).',
+    location: 'Anterior hip spanning AIIS to intertrochanteric line of femur',
+    composition: 'Extremely dense Type I collagen fibers divided into transverse and descending bands',
     attachmentPoints: [
-      'Lateral margins: Thin layers of hyaline cartilage lining the articular surfaces of the left and right pubic symphyseal facets',
-      'Periphery: Intertwines with the aponeurosis of the rectus abdominis and gracilis tendons'
+      'Proximal: Anterior inferior iliac spine (AIIS) and acetabular rim',
+      'Distal: Entire length of intertrochanteric line of femur',
     ],
     biomechanicalFunction: [
-      'Resists tension, shear, and compression across the anterior pelvic ring during upright walking and weight-bearing',
-      'Undergoes physiological widening and ligamentous laxity under relaxin hormone influence during late pregnancy and parturition'
+      'Primary static restraint against hip hyperextension, enabling relaxed bipedal standing with minimal muscular effort',
+      'Restrains external rotation and adduction in extended hip position',
     ],
-    jointOrStructureAssociation: 'Pelvic ring and sacroiliac joint stability',
-    vascularity: 'Avascular central zone with peripheral vascular plexus from obturator and internal pudendal arteries',
+    jointOrStructureAssociation: 'Coxofemoral (hip) joint, acetabular labrum, femoral head',
+    vascularity: 'Ascending branch of lateral femoral circumflex artery',
     commonPathologies: [
-      'Osteitis pubis: Painful, non-infectious chronic inflammatory overuse condition of the pubic symphysis common in kicking athletes (soccer players)',
-      'Pubic symphysis diastasis: Traumatic separation (>10 mm) of the joint during pelvic ring disruption fractures ("open-book" pelvis) or difficult operative vaginal deliveries'
+      'Hip capsular sprains and microinstability in dancers and gymnasts',
+      'Surgical capsulotomy and repair during hip arthroscopy for femoroacetabular impingement (FAI)',
     ],
-    clinicalNotes: [
-      'A pubic symphysis separation exceeding 2.5 cm indicates complete rupture of the anterior sacroiliac ligaments and unstable pelvic ring collapse.'
+  },
+  {
+    id: 'sacrotuberous_ligament_l',
+    name: 'Sacrotuberous Ligament of Left Pelvis',
+    latinName: 'Ligamentum sacrotuberale sinistrum',
+    commonName: 'Sacrotuberous band',
+    system: 'connective',
+    region: 'pelvis_hip',
+    meshId: 'lig_sacrotuberous_l',
+    meshIds: ['lig_sacrotuberous_l', 'lig_sacrotuberous_r'],
+    tissueType: 'Ligament',
+    description: 'Massive, fan-shaped ligament spanning the posteromedial pelvis, forming the boundary of the greater and lesser sciatic foramina.',
+    location: 'Posterior pelvis connecting sacrum and ilium to ischial tuberosity',
+    composition: 'Dense Type I collagen fibers, partially continuous with the long head of the biceps femoris tendon',
+    attachmentPoints: [
+      'Medial: Posterior superior iliac spine (PSIS), lower sacrum, and upper coccyx',
+      'Lateral: Medial margin of ischial tuberosity',
     ],
-    tags: ['pubic symphysis', 'pelvis', 'fibrocartilage', 'relaxin', 'osteitis pubis', 'open book']
-  }
+    biomechanicalFunction: [
+      'Prevents upward nutation (posterior tilting) of the lower sacrum under body weight loads',
+      'Essential for pelvic ring force closure and sacroiliac joint stability',
+    ],
+    jointOrStructureAssociation: 'Sacroiliac joint, sciatic foramina, pudendal nerve (passes between sacrotuberous and sacrospinous ligaments)',
+    vascularity: 'Superior and inferior gluteal arteries',
+    commonPathologies: [
+      'Sacroiliac joint dysfunction and pelvic girdle pain during pregnancy (relaxin-mediated ligamentous laxity)',
+      'Pudendal nerve entrapment syndrome (Alcock canal syndrome) between sacrotuberous and sacrospinous ligaments',
+    ],
+  },
+  {
+    id: 'inguinal_ligament_l',
+    name: 'Inguinal Ligament of Left Pelvis (Poupart Ligament)',
+    latinName: 'Ligamentum inguinale sinistrum',
+    commonName: 'Poupart ligament / Groin crease ligament',
+    system: 'connective',
+    region: 'pelvis_hip',
+    meshId: 'lig_inguinal_l',
+    meshIds: ['lig_inguinal_l', 'lig_inguinal_r'],
+    tissueType: 'Ligament',
+    description: 'Dense fibrous band formed by the rolled-under, thickened inferior edge of the external oblique aponeurosis.',
+    location: 'Groin crease spanning anterior superior iliac spine (ASIS) to pubic tubercle',
+    composition: 'Heavy Type I collagen aponeurotic tissue',
+    attachmentPoints: [
+      'Lateral: Anterior Superior Iliac Spine (ASIS)',
+      'Medial: Pubic tubercle and pectineal line (via lacunar ligament)',
+    ],
+    biomechanicalFunction: [
+      'Defines the anatomical border separating the anterior abdominal wall from the femoral triangle of the thigh',
+      'Forms the floor of the inguinal canal',
+    ],
+    jointOrStructureAssociation: 'Femoral triangle (femoral nerve, artery, vein), inguinal canal, lacunar ligament',
+    vascularity: 'Superficial and deep circumflex iliac arteries',
+    commonPathologies: [
+      'Inguinal hernia (indirect or direct hernia protruding above the inguinal ligament)',
+      'Femoral hernia (herniation beneath the inguinal ligament through the femoral ring)',
+      'Meralgia paresthetica (compression of the lateral femoral cutaneous nerve near the ASIS attachment)',
+    ],
+  },
+  {
+    id: 'pubic_symphysis_disc',
+    name: 'Interpubic Fibrocartilage Disc of Pubic Symphysis',
+    latinName: 'Discus interpubicus symphysis pubicae',
+    commonName: 'Pubic symphysis disc',
+    system: 'connective',
+    region: 'pelvis_hip',
+    meshId: 'lig_pubic_symphysis',
+    tissueType: 'Cartilage',
+    description: 'Thick fibrocartilaginous disc interpositioned between the articular surfaces of the two pubic bones, reinforced by superior and arcuate pubic ligaments.',
+    location: 'Anterior midline of the pelvic ring uniting the pubic bones',
+    composition: 'Fibrocartilage with concentric lamellae of Type I collagen around an occasional fluid cavity',
+    attachmentPoints: [
+      'Attached to hyaline cartilage plates covering the medial facies symphysialis of left and right pubic bones',
+    ],
+    biomechanicalFunction: [
+      'Absorbs shock and provides slight rotational resilience to the anterior pelvic ring during gait and running',
+      'Softens during late pregnancy under the influence of the hormone relaxin to expand the pelvic birth canal',
+    ],
+    jointOrStructureAssociation: 'Pubic bones, arcuate pubic ligament, rectus abdominis tendon',
+    vascularity: 'Obturator and internal pudendal arterial branches; central zone is avascular',
+    commonPathologies: [
+      'Osteitis pubis (painful non-infectious inflammatory erosion of the pubic symphysis in soccer and rugby athletes)',
+      'Diastasis of pubic symphysis (traumatic or obstetric separation exceeding 10 mm)',
+    ],
+  },
+
+  // ==========================================
+  // ANKLE AND FOOT CONNECTIVE TISSUES
+  // ==========================================
+  {
+    id: 'calcaneal_tendon_l',
+    name: 'Calcaneal Tendon of Left Ankle (Achilles Tendon)',
+    latinName: 'Tendo calcaneus sinister',
+    commonName: 'Achilles tendon',
+    system: 'connective',
+    region: 'ankle_foot',
+    meshId: 'lig_calcaneal_tendon_l',
+    meshIds: ['lig_calcaneal_tendon_l', 'lig_calcaneal_tendon_r'],
+    tissueType: 'Tendon',
+    description: 'The thickest and strongest tendon in the human body, conjoining the gastrocnemius and soleus muscles to the calcaneus.',
+    location: 'Posterior lower leg and ankle inserting into the posterior calcaneus',
+    composition: 'Dense regular parallel Type I collagen with spiral torsion (~90 degrees) providing high elastic recoil',
+    attachmentPoints: [
+      'Proximal: Aponeuroses of gastrocnemius (medial/lateral heads) and soleus muscle belly',
+      'Distal: Middle facet of the posterior surface of the calcaneus (heel bone)',
+    ],
+    biomechanicalFunction: [
+      'Transmits powerful plantarflexion torque required for walking, sprinting, and vertical jumping',
+      'Stores and releases elastic strain energy, contributing up to 35% of the mechanical work of distance running',
+    ],
+    jointOrStructureAssociation: 'Talocrural joint, subtalar joint, retrocalcaneal bursa',
+    vascularity: 'Supplied via paratenon vessels and posterior tibial artery; relative watershed hypovascular zone located 2–6 cm proximal to insertion',
+    commonPathologies: [
+      'Achilles tendon rupture (typically in watershed zone 2–6 cm above heel; diagnosed with Thompson squeeze test)',
+      'Insertional and midportion Achilles tendinopathy',
+    ],
+  },
+  {
+    id: 'atfl_ankle_l',
+    name: 'Anterior Talofibular Ligament of Left Ankle (ATFL)',
+    latinName: 'Ligamentum talofibulare anterius sinistrum',
+    commonName: 'ATFL (most commonly sprained ligament in human body)',
+    system: 'connective',
+    region: 'ankle_foot',
+    meshId: 'lig_atfl_l',
+    meshIds: ['lig_atfl_l', 'lig_atfl_r'],
+    tissueType: 'Ligament',
+    description: 'Short, flat ribbon-like ligament on the anterolateral ankle, forming the most vulnerable component of the lateral collateral ligament complex.',
+    location: 'Anterolateral ankle passing from lateral malleolus forward and medially to neck of talus',
+    composition: 'Type I collagen fibers with abundant proprioceptive mechanoreceptors',
+    attachmentPoints: [
+      'Proximal: Anterior margin of lateral malleolus of fibula',
+      'Distal: Lateral neck of the talus bone',
+    ],
+    biomechanicalFunction: [
+      'Primary passive restraint resisting ankle inversion in plantarflexion and anterior talar displacement',
+      'Guides talar glide during normal gait kinematics',
+    ],
+    jointOrStructureAssociation: 'Talocrural (ankle) joint, lateral malleolus, talus',
+    vascularity: 'Perforating branches of fibular and anterior tibial arteries',
+    commonPathologies: [
+      'Inversion ankle sprain (Grade I–III tear of ATFL; positive Anterior Drawer test of ankle)',
+      'Chronic lateral ankle instability (CLAI) following repeated untreated sprains',
+    ],
+  },
+  {
+    id: 'cfl_ankle_l',
+    name: 'Calcaneofibular Ligament of Left Ankle (CFL)',
+    latinName: 'Ligamentum calcaneofibulare sinistrum',
+    commonName: 'CFL',
+    system: 'connective',
+    region: 'ankle_foot',
+    meshId: 'lig_cfl_l',
+    meshIds: ['lig_cfl_l', 'lig_cfl_r'],
+    tissueType: 'Ligament',
+    description: 'Narrow, rounded cord passing obliquely downward and backward from the tip of the lateral malleolus to the lateral surface of the calcaneus.',
+    location: 'Lateral ankle deep to the fibularis (peroneal) tendons',
+    composition: 'High-density cord of Type I collagen fibers',
+    attachmentPoints: [
+      'Superior: Apex and anterior border of lateral malleolus of fibula',
+      'Inferior: Tubercle on the lateral surface of the calcaneus',
+    ],
+    biomechanicalFunction: [
+      'Resists ankle inversion in dorsiflexion and neutral position',
+      'Provides simultaneous stabilization for both the talocrural and subtalar joints',
+    ],
+    jointOrStructureAssociation: 'Subtalar joint, talocrural joint, fibularis longus and brevis tendons',
+    vascularity: 'Fibular artery lateral malleolar branches',
+    commonPathologies: [
+      'Second-stage tear in moderate-to-severe lateral ankle inversion sprains (after ATFL)',
+      'Subtalar joint instability',
+    ],
+  },
+  {
+    id: 'deltoid_ligament_l',
+    name: 'Deltoid Ligament Complex of Left Ankle (Medial Collateral Ligament)',
+    latinName: 'Ligamentum collaterale mediale articulationis talocruralis sinistrum',
+    commonName: 'Deltoid ligament (superficial and deep components)',
+    system: 'connective',
+    region: 'ankle_foot',
+    meshId: 'lig_deltoid_l',
+    meshIds: ['lig_deltoid_l', 'lig_deltoid_r'],
+    tissueType: 'Ligament',
+    description: 'Extremely powerful, thick triangular ligament reinforcing the entire medial ankle, comprising tibionavicular, tibiocalcaneal, and anterior/posterior tibiotalar parts.',
+    location: 'Medial ankle spanning medial malleolus to navicular, calcaneus, and talus',
+    composition: 'Very dense multi-directional Type I collagen fibers; far stronger than lateral ankle ligaments',
+    attachmentPoints: [
+      'Proximal apex: Anterior, posterior, and inferior margins of medial malleolus of tibia',
+      'Distal base: Tuberosity of navicular, sustentaculum tali of calcaneus, and medial body/tubercle of talus',
+    ],
+    biomechanicalFunction: [
+      'Primary static restraint against excessive ankle eversion, valgus tilt, and external rotation',
+      'Maintains the medial longitudinal arch by supporting the spring ligament',
+    ],
+    jointOrStructureAssociation: 'Talocrural joint, subtalar joint, spring ligament (calcaneonavicular)',
+    vascularity: 'Posterior tibial artery and medial malleolar network',
+    commonPathologies: [
+      'Pott fracture / Bimalleolar fracture (deltoid avulsion combined with lateral malleolar fracture from severe eversion)',
+      'Medial ankle instability in chronic pes planus (flatfoot deformity)',
+    ],
+  },
+  {
+    id: 'plantar_aponeurosis_l',
+    name: 'Plantar Aponeurosis of Left Foot (Plantar Fascia)',
+    latinName: 'Aponeurosis plantaris sinistra',
+    commonName: 'Plantar fascia / Arch tie-rod',
+    system: 'connective',
+    region: 'ankle_foot',
+    meshId: 'lig_plantar_aponeurosis_l',
+    meshIds: ['lig_plantar_aponeurosis_l', 'lig_plantar_aponeurosis_r'],
+    tissueType: 'Aponeurosis',
+    description: 'Thick, pearlescent longitudinal band of dense connective tissue supporting the medial and lateral longitudinal arches of the sole.',
+    location: 'Plantar aspect of foot directly under thick subcutaneous skin pads',
+    composition: 'Dense Type I collagen fibers organized in thick central and thinner medial/lateral bands',
+    attachmentPoints: [
+      'Posterior: Medial process of the calcaneal tuberosity',
+      'Anterior: Five digital slips inserting into fibrous digital sheaths and plantar plates of metatarsophalangeal joints',
+    ],
+    biomechanicalFunction: [
+      'Windlass Mechanism: Great toe dorsiflexion winds plantar fascia around metatarsal heads, elevating medial arch and rigidifying foot for push-off',
+      'Acts as a dynamic shock-absorbing spring during the stance phase of walking',
+    ],
+    jointOrStructureAssociation: 'Tarsal and metatarsophalangeal joints, flexor digitorum brevis',
+    vascularity: 'Medial and lateral plantar arteries; insertional enthesis is poorly vascularized',
+    commonPathologies: [
+      'Plantar fasciitis (repetitive microtrauma and degenerative enthesopathy at medial calcaneal tuberosity causing sharp morning heel pain)',
+      'Plantar fascial rupture from explosive eccentric loading',
+    ],
+  },
+
+  // ==========================================
+  // SPINE AND THORAX CONNECTIVE TISSUES
+  // ==========================================
+  {
+    id: 'all_spine',
+    name: 'Anterior Longitudinal Ligament of Spine (ALL)',
+    latinName: 'Ligamentum longitudinale anterius',
+    commonName: 'ALL of vertebral column',
+    system: 'connective',
+    region: 'spine_trunk',
+    meshId: 'lig_all_spine',
+    tissueType: 'Ligament',
+    description: 'Broad, thick continuous fibrous band running along the anterior surfaces of all vertebral bodies and intervertebral discs from occiput to sacrum.',
+    location: 'Anterior midline of vertebral column from basilar occiput and atlas down to sacral promontory',
+    composition: 'Dense longitudinal Type I collagen fibers arranged in superficial (3–5 vertebrae), intermediate (2–3 vertebrae), and deep (adjacent vertebrae) layers',
+    attachmentPoints: [
+      'Superior: Pharyngeal tubercle of occipital bone and anterior tubercle of atlas (C1)',
+      'Inferior: Anterior surface of upper sacrum (pelvic surface)',
+      'Intermediate: Firmly attached to anterior intervertebral discs and vertebral body margins',
+    ],
+    biomechanicalFunction: [
+      'The ONLY spinal ligament that limits hyperextension of the vertebral column',
+      'Prevents anterior displacement of vertebral bodies and stabilizes against anterior disc herniation',
+    ],
+    jointOrStructureAssociation: 'Cervical, thoracic, and lumbar intervertebral symphyses',
+    vascularity: 'Segmental lumbar and intercostal arteries',
+    commonPathologies: [
+      'Diffuse Idiopathic Skeletal Hyperostosis (DISH / Forestier disease — extensive flowing ossification of the ALL)',
+      'Whiplash injury (hyperextension tear of cervical ALL)',
+    ],
+  },
+  {
+    id: 'supraspinous_spine',
+    name: 'Supraspinous Ligament and Ligamentum Nuchae',
+    latinName: 'Ligamentum supraspinale et ligamentum nuchae',
+    commonName: 'Supraspinous ligament / Nuchal ligament',
+    system: 'connective',
+    region: 'spine_trunk',
+    meshId: 'lig_supraspinous_spine',
+    tissueType: 'Ligament',
+    description: 'Continuous cord of fibrous tissue bridging the tips of the spinous processes from C7 to the sacrum, expanding cranially into the fibroelastic ligamentum nuchae.',
+    location: 'Posterior midline of spine connecting spinous process tips up to external occipital protuberance',
+    composition: 'Heavy Type I collagen fibers post-cranially; high elastin content in cervical ligamentum nuchae',
+    attachmentPoints: [
+      'Superior: External occipital protuberance and median nuchal crest',
+      'Inferior: Spinous process of C7 down along all thoracic and lumbar spinous processes to median sacral crest',
+    ],
+    biomechanicalFunction: [
+      'Limits excessive forward flexion of the spine',
+      'Provides passive head-neck postural suspension, reducing fatigue of deep cervical extensor musculature',
+    ],
+    jointOrStructureAssociation: 'Spinous processes, interspinous ligaments, trapezius and splenius capitis origins',
+    vascularity: 'Posterior branches of segmental spinal arteries',
+    commonPathologies: [
+      'Sprain / tearing during hyperflexion spinal trauma (Clay-shoveler fracture context)',
+      'Postural ligamentous strain from chronic forward head carriage ("text neck")',
+    ],
+  },
+
+  // ==========================================
+  // COSTAL CARTILAGES 1 TO 10
+  // ==========================================
+  ...Array.from({ length: 10 }, (_, i) => {
+    const num = i + 1;
+    const isTrueRib = num <= 7;
+    return {
+      id: `costal_cartilage_${num}`,
+      name: `Costal Cartilage ${num} (Bilateral Pair)`,
+      latinName: `Cartilago costalis ${num}`,
+      commonName: `Rib ${num} cartilage`,
+      system: 'connective' as const,
+      region: 'thoracic_cage' as const,
+      meshId: `cc${num}_l`,
+      meshIds: [`cc${num}_l`, `cc${num}_r`],
+      tissueType: 'Cartilage' as const,
+      description: `Bars of resilient hyaline cartilage extending anteriorly from rib ${num}, conferring critical elasticity to the thoracic cage during respiration.`,
+      location: `Anterior chest connecting anterior end of rib ${num} ${isTrueRib ? 'to sternum' : 'to costal cartilage above'}`,
+      composition: 'Hyaline cartilage: Type II collagen fibrils embedded in proteoglycan aggregate matrix (chondroitin sulfate)',
+      attachmentPoints: [
+        `Lateral: Costochondral junction of anterior rib ${num}`,
+        isTrueRib 
+          ? `Medial: Costal notch on lateral border of sternum (sternocostal joint ${num})`
+          : `Medial: Articulates with inferior border of costal cartilage ${num - 1} forming the costal margin`,
+      ],
+      biomechanicalFunction: [
+        'Provides flexible elastic compliance enabling expansion and recoil of thoracic cage during ventilation',
+        'Absorbs anterior impact shock, protecting heart and lungs from direct blunt chest trauma',
+      ],
+      jointOrStructureAssociation: `Rib ${num}, sternum, internal intercostal muscles, pectoralis major`,
+      vascularity: 'Avascular; enclosed by vascular perichondrium supplied by internal thoracic artery branches',
+      commonPathologies: [
+        'Costochondritis (inflammatory tenderness of costochondral or sternocostal junctions)',
+        'Tietze syndrome (painful costochondral swelling, usually affecting costal cartilage 2 or 3)',
+        'Costal cartilage fractures and calcification with advancing age',
+      ],
+    };
+  }),
+
+  // ==========================================
+  // REPRESENTATIVE INTERVERTEBRAL DISCS
+  // ==========================================
+  {
+    id: 'disc_l4_l5',
+    name: 'Intervertebral Disc L4–L5',
+    latinName: 'Discus intervertebralis L4–L5',
+    commonName: 'L4–L5 spinal disc',
+    system: 'connective',
+    region: 'spine_trunk',
+    meshId: 'disc_l4_l5',
+    tissueType: 'Cartilage',
+    description: 'Massive, wedge-shaped fibrocartilaginous cushion uniting the 4th and 5th lumbar vertebrae, bearing the heaviest compressive loads in the human spine.',
+    location: 'Between L4 and L5 lumbar vertebral bodies',
+    composition: 'Anulus fibrosus (concentric lamellae of Type I collagen) surrounding central gelatinous nucleus pulposus (Type II collagen and hydrophilic proteoglycans)',
+    attachmentPoints: [
+      'Superior: Hyaline cartilage endplate of L4 inferior vertebral body',
+      'Inferior: Hyaline cartilage endplate of L5 superior vertebral body',
+    ],
+    biomechanicalFunction: [
+      'Absorbs high compressive axial loads and distributes pressure evenly across vertebral endplates',
+      'Allows multi-directional intervertebral mobility (flexion, extension, lateral bending)',
+    ],
+    jointOrStructureAssociation: 'L4 and L5 vertebrae, ALL, PLL, L5 spinal nerve root',
+    vascularity: 'Completely avascular in adulthood; relies exclusively on fluid imbibition and endplate diffusion',
+    commonPathologies: [
+      'Lumbar disc herniation (postero-lateral extrusion of nucleus pulposus compressing the traversing L5 nerve root, causing classic sciatica)',
+      'Degenerative disc disease (DDD) with height loss and facet joint osteoarthrosis',
+    ],
+  },
+  {
+    id: 'disc_l5_s1',
+    name: 'Intervertebral Disc L5–S1 (Lumbosacral Disc)',
+    latinName: 'Discus intervertebralis L5–S1',
+    commonName: 'L5–S1 lumbosacral disc',
+    system: 'connective',
+    region: 'spine_trunk',
+    meshId: 'disc_l5_s1',
+    tissueType: 'Cartilage',
+    description: 'Heavily wedged fibrocartilaginous disc at the lumbosacral junction, accommodating the sacral promontory angle and transmitting upper body weight to pelvis.',
+    location: 'Between 5th lumbar vertebra and 1st sacral vertebra (sacral promontory)',
+    composition: 'Anulus fibrosus with oblique collagen cross-hatching surrounding pressurized nucleus pulposus',
+    attachmentPoints: [
+      'Superior: L5 inferior vertebral endplate',
+      'Inferior: S1 superior sacral promontory endplate',
+    ],
+    biomechanicalFunction: [
+      'Crucial shock absorber at the transition zone between the mobile lumbar spine and rigid sacropelvic ring',
+      'Maintains normal lumbar lordosis and neuroforaminal height',
+    ],
+    jointOrStructureAssociation: 'L5 vertebra, sacrum, S1 spinal nerve root, lumbosacral trunk',
+    vascularity: 'Avascular; nourished via passive diffusion from adjacent vertebral capillary beds',
+    commonPathologies: [
+      'L5–S1 disc herniation compressing S1 nerve root (loss of Achilles reflex, calf weakness, and lateral foot numbness)',
+      'Spondylolisthesis (forward translation of L5 on S1 following bilateral pars interarticularis fractures)',
+    ],
+  },
+  {
+    id: 'disc_c5_c6',
+    name: 'Intervertebral Disc C5–C6',
+    latinName: 'Discus intervertebralis C5–C6',
+    commonName: 'C5–C6 cervical disc',
+    system: 'connective',
+    region: 'spine_trunk',
+    meshId: 'disc_c5_c6',
+    tissueType: 'Cartilage',
+    description: 'Cervical fibrocartilaginous disc providing exceptional flexural and rotational mobility while cushioning the cervical lordosis.',
+    location: 'Between C5 and C6 cervical vertebral bodies',
+    composition: 'Anterior crescentic anulus fibrosus with central nucleus pulposus; supported by uncovertebral joints (joints of Luschka)',
+    attachmentPoints: [
+      'Superior: C5 inferior endplate',
+      'Inferior: C6 superior endplate',
+    ],
+    biomechanicalFunction: [
+      'Facilitates high-amplitude cervical flexion, extension, and lateral rotation',
+      'Cushions and protects cervical spinal cord and nerve roots',
+    ],
+    jointOrStructureAssociation: 'C5 and C6 cervical vertebrae, C6 spinal nerve, uncovertebral joints',
+    vascularity: 'Avascular; dependent on endplate permeability',
+    commonPathologies: [
+      'Cervical radiculopathy (C5–C6 disc herniation compressing C6 nerve root causing biceps weakness and radial forearm numbness)',
+      'Cervical spondylotic myelopathy from central disc protrusion compressing the spinal cord',
+    ],
+  },
+
+  // ==========================================
+  // HEAD AND NECK CONNECTIVE TISSUES
+  // ==========================================
+  {
+    id: 'galea_aponeurotica',
+    name: 'Galea Aponeurotica (Epicranial Aponeurosis)',
+    latinName: 'Galea aponeurotica / Aponeurosis epicranialis',
+    commonName: 'Epicranial aponeurosis / Scalp tendon sheet',
+    system: 'connective',
+    region: 'head_neck',
+    meshId: 'lig_galea_aponeurotica',
+    tissueType: 'Aponeurosis',
+    description: 'Tough, fibrous sheet extending over the entire calvaria, connecting the occipitalis and frontalis muscle bellies of the occipitofrontalis muscle.',
+    location: 'Superficial cranium between frontalis and occipitalis muscles',
+    composition: 'Dense fibrous connective tissue intimately attached to the overlying scalp skin by dense subcutaneous trabeculae',
+    attachmentPoints: [
+      'Anterior: Inserts into frontalis muscle and frontal bone',
+      'Posterior: Inserts into occipitalis muscle and superior nuchal line of occipital bone',
+      'Lateral: Continues into the temporoparietal fascia over the zygomatic arch',
+    ],
+    biomechanicalFunction: [
+      'Unites the muscles of facial expression on the forehead with the occipital anchors',
+      'Forms the third layer of the SCALP (Skin, Connective tissue, Aponeurosis, Loose connective tissue, Pericranium)',
+    ],
+    jointOrStructureAssociation: 'Cranium, frontalis muscle, occipitalis muscle, epicranial vessels',
+    vascularity: 'Superficial temporal and occipital arterial networks',
+    commonPathologies: [
+      'Scalp lacerations with galea involvement gape widely due to coronal tension; requires direct layered surgical repair',
+      'Subgaleal hematoma (accumulation of blood in the loose subaponeurotic space beneath the galea)',
+    ],
+  },
+  {
+    id: 'tmj_capsule_l',
+    name: 'Temporomandibular Joint Capsule and Lateral Ligament of Left Jaw',
+    latinName: 'Capsula et ligamentum laterale articulationis temporomandibularis sinistra',
+    commonName: 'TMJ capsule and lateral temporomandibular ligament',
+    system: 'connective',
+    region: 'head_neck',
+    meshId: 'lig_tmj_capsule_l',
+    meshIds: ['lig_tmj_capsule_l', 'lig_tmj_capsule_r'],
+    tissueType: 'Ligament',
+    description: 'Thin, loose fibrous envelope enclosing the temporomandibular articulation, heavily reinforced laterally by the oblique temporomandibular ligament.',
+    location: 'Lateral jaw articulation connecting zygomatic arch to mandibular condyle',
+    composition: 'Collagenous fibrous capsule surrounding a dense biconcave articular fibrocartilage disc',
+    attachmentPoints: [
+      'Superior: Articular tubercle and mandibular fossa of temporal bone',
+      'Inferior: Lateral and posterior border of neck of mandible',
+    ],
+    biomechanicalFunction: [
+      'Prevents posterior and inferior displacement of the mandibular condyle during mastication',
+      'Guides condylar hinge rotation and forward translation onto the articular tubercle during jaw opening',
+    ],
+    jointOrStructureAssociation: 'TMJ articular disc, condylar process of mandible, lateral pterygoid muscle',
+    vascularity: 'Superficial temporal and maxillary arteries',
+    commonPathologies: [
+      'Temporomandibular Joint Disorder (TMD) — anterior disc displacement with or without reduction causing jaw clicking and locking',
+      'Traumatic TMJ dislocation (condyle locked anterior to the articular eminence)',
+    ],
+  },
 ];
+
+export const getConnectiveStructureById = (id: string): ConnectiveStructure | undefined => {
+  return CONNECTIVE_STRUCTURES.find((s) => s.id === id);
+};
+
+export const CONNECTIVE_DATA = CONNECTIVE_STRUCTURES;
+
+export const getConnectiveStructureByMeshId = (meshId: string): ConnectiveStructure | undefined => {
+  const cleanId = meshId.toLowerCase();
+  return CONNECTIVE_STRUCTURES.find(
+    (s) => s.meshId.toLowerCase() === cleanId || s.meshIds?.some((m) => m.toLowerCase() === cleanId)
+  );
+};
+
+export const getConnectiveStructuresByRegion = (region: string): ConnectiveStructure[] => {
+  return CONNECTIVE_STRUCTURES.filter((s) => s.region === region);
+};

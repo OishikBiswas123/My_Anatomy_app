@@ -6,7 +6,7 @@ export const ANATOMY_QUIZZES: QuizQuestion[] = [
     type: 'multiple_choice',
     question: 'A 38-year-old tennis player experiences a sudden "pop" in the back of the ankle during sprint acceleration. The Thompson squeeze test is positive. Which connective tissue structure is ruptured?',
     system: 'connective',
-    targetStructureId: 'connective_achilles_tendon',
+    targetStructureId: 'calcaneal_tendon_l',
     options: [
       { id: 'opt_1', text: 'Plantaris tendon', isCorrect: false },
       { id: 'opt_2', text: 'Calcaneal Tendon (Achilles Tendon)', isCorrect: true, explanation: 'The Achilles tendon is the thickest tendon in the body; rupture results in inability to plantarflex when the calf is squeezed (positive Thompson test).' },
@@ -48,7 +48,7 @@ export const ANATOMY_QUIZZES: QuizQuestion[] = [
     type: 'multiple_choice',
     question: 'Which connective tissue structures prolong the anterior ends of the ribs and provide thoracic wall elasticity during respiration?',
     system: 'connective',
-    targetStructureId: 'connective_costal_cartilage',
+    targetStructureId: 'costal_cartilage_1',
     options: [
       { id: 'opt_1', text: 'Costal Cartilages', isCorrect: true, explanation: 'Costal cartilages are hyaline cartilage bars connecting the true ribs (1–7) to the sternum.' },
       { id: 'opt_2', text: 'Intervertebral discs', isCorrect: false },
@@ -62,7 +62,7 @@ export const ANATOMY_QUIZZES: QuizQuestion[] = [
     type: 'multiple_choice',
     question: 'A 45-year-old patient presents with severe sciatica radiating down the posterolateral leg. An MRI reveals a herniated nucleus pulposus compressing the traversing L5 nerve root. What anatomical structure has ruptured?',
     system: 'connective',
-    targetStructureId: 'connective_intervertebral_discs',
+    targetStructureId: 'disc_l4_l5',
     options: [
       { id: 'opt_1', text: 'Ligamentum flavum', isCorrect: false },
       { id: 'opt_2', text: 'Anulus fibrosus of the Intervertebral Disc', isCorrect: true, explanation: 'Disc herniation occurs when the outer anulus fibrosus tears, allowing gelatinous nucleus pulposus to escape and impinge upon nerve roots.' },

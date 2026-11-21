@@ -123,7 +123,7 @@ export function searchAnatomy(query: string, systemFilter?: AnatomicalSystemType
     if (item.commonName && item.commonName.toLowerCase().includes(q)) return true;
     if (item.latinName && item.latinName.toLowerCase().includes(q)) return true;
     if (item.region.toLowerCase().replace(/_/g, ' ').includes(q)) return true;
-    if (item.tags.some((tag) => tag.toLowerCase().includes(q))) return true;
+    if (item.tags?.some((tag) => tag.toLowerCase().includes(q))) return true;
     if (item.description.toLowerCase().includes(q)) return true;
     return false;
   });

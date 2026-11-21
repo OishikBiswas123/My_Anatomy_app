@@ -156,7 +156,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 Connective Tissue
               </h3>
               <p className="text-xs text-slate-400 mt-1 line-clamp-2">
-                Tendons, aponeuroses, deep fascia, costal cartilages, and spinal discs.
+                Ligaments, joint capsules, retinacula, pulleys, aponeuroses, costal cartilages, and discs.
               </p>
               <div className="mt-4 flex items-center justify-between text-xs text-sky-400 font-medium">
                 <span>Explore Connective 3D</span>

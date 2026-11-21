@@ -39,11 +39,14 @@ const MUSCULAR_REGIONS: RegionItem[] = [
 ];
 
 const CONNECTIVE_REGIONS: RegionItem[] = [
-  { id: 'lower_limb', name: 'Lower Limb', description: 'Calcaneal (Achilles) tendon, IT band, plantar fascia' },
-  { id: 'spine_trunk', name: 'Spine and Trunk', description: 'Intervertebral discs, linea alba, thoracolumbar fascia' },
+  { id: 'hand_wrist', name: 'Hand and Wrist', description: 'Flexor & extensor retinacula, palmar aponeurosis, digital pulleys, carpal ligaments' },
+  { id: 'knee', name: 'Knee Joint', description: 'Patellar ligament, ACL, PCL, MCL, LCL, medial & lateral menisci' },
+  { id: 'shoulder_arm', name: 'Shoulder and Elbow', description: 'Glenohumeral capsule, coracoacromial, coracoclavicular, UCL, RCL, annular ligament' },
+  { id: 'pelvis_hip', name: 'Pelvis and Hip', description: 'Iliofemoral (Y-ligament), sacrotuberous, sacrospinous, inguinal ligament, pubic symphysis' },
+  { id: 'ankle_foot', name: 'Ankle and Foot', description: 'Achilles tendon, ATFL, CFL, PTFL, deltoid ligament, plantar fascia' },
+  { id: 'spine_trunk', name: 'Spine and Trunk', description: 'Anterior longitudinal ligament, supraspinous, 23 intervertebral discs' },
   { id: 'thoracic_cage', name: 'Thoracic Cage', description: 'Costal cartilages (1–10), sternocostal joints' },
-  { id: 'pelvis_hip', name: 'Pelvis and Groin', description: 'Inguinal ligament, pubic symphysis interpubic disc' },
-  { id: 'head_neck', name: 'Head and Neck', description: 'Galea aponeurotica, nuchal ligament' },
+  { id: 'head_neck', name: 'Head and Neck', description: 'TMJ joint capsule, galea aponeurotica, nuchal ligament' },
 ];
 
 export const RegionSelector: React.FC<RegionSelectorProps> = ({

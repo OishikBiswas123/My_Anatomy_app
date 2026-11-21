@@ -89,8 +89,8 @@ export const AnatomyCanvas: React.FC<AnatomyCanvasProps> = ({
   highlightColor = '#06b6d4',
   renderQuality = 'medium',
 }) => {
-  // Model selection: muscles.glb houses all muscles, tendons, aponeuroses, costal cartilages and spinal discs
-  const modelPath = (system === 'muscular' || system === 'connective')
+  // Model selection: muscles.glb for muscular; skeleton.glb for skeletal and connective systems
+  const modelPath = system === 'muscular'
     ? '/models/muscles/muscles.glb' 
     : '/models/bones/skeleton.glb';
 
