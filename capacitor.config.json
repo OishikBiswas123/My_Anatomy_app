@@ -1,0 +1,13 @@
+{
+  "appId": "com.myanatomy.app",
+  "appName": "My Anatomy",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  }
+}
